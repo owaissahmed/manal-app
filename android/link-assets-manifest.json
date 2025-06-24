@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/InterVariableFont.ttf",
+      "sha1": "ee5c2e22ffeddefc433c9aa4c76779bb73a5c682"
+    },
+    {
+      "path": "assets/fonts/Oswald-VariableFont_wght.ttf",
+      "sha1": "8c1bc7753ead18fa7e55652d3113d12edc02eaaf"
+    }
+  ]
+}

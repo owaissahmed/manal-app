@@ -7,6 +7,7 @@ import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Feather from 'react-native-vector-icons/Feather';
 import CarWash from '../../assets/images/carWash.png';
 import CarSeatClean from '../../assets/images/carSeatClean.png';
+import PlusGroup from '../../assets/images/plusGroup.png';
 import { s, scale } from 'react-native-size-matters';
 import Button from '../components/button';
 
@@ -46,12 +47,12 @@ const Services = ({ navigation }) => {
                                 style={{
                                     fontFamily: 'InterVariableFont', fontSize: scale(22), fontWeight: '700', color: '#1B337C', textAlign: 'center', marginTop: scale(3),
                                 }}>
-                                Car{'\n'}vacumming
+                                Car{'\n'}Vacumming
                             </Text>
                         </View>
                     </View>
                     <View
-                        style={{ width: scale(300), paddingHorizontal: scale(20), paddingVertical: scale(10), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(20), backgroundColor: 'white', }}>
+                        style={{ width: scale(280), paddingHorizontal: scale(20), paddingVertical: scale(10), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(20), backgroundColor: 'white', }}>
                         <View
                             style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
                             <View>
@@ -70,21 +71,22 @@ const Services = ({ navigation }) => {
                         </View>
 
                         <View style={{ marginTop: scale(6), alignSelf: 'center' }}>
-                            <Button style={{ backgroundColor: '#74BAF8' }} textStyle={{ color: 'white' }} onPress={() => navigation.navigate('Services')} title="ORDER NOW" width={scale(250)} height={scale(45)} />
+                            <Button backgroundColor={'#74BAF8'} textStyle={{ color: 'white' }} onPress={() => navigation.navigate('CarWash')} title="ORDER NOW" width={scale(250)} height={scale(40)} />
                         </View>
                     </View>
                     <View
                         style={{
                             flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', alignSelf: 'center', paddingHorizontal: scale(20), paddingVertical: scale(5), borderColor: '#13418C', backgroundColor: 'white',
                         }}>
-                        <MaterialIcons style={{padding:scale(4)}} name="notifications-none" color="#1B337C" size={32} />
-                        <View style={{ alignItems: 'center' }}>
-                            <Feather style={{ backgroundColor: '#1B337C',padding:scale(6),borderRadius:scale(100)}} name="plus" color="white" size={28} />
+                        <MaterialIcons style={{ padding: scale(4) }} name="notifications-none" color="gray" size={32} />
+                        <View style={{ alignItems: 'center', marginTop: scale(-15) }}>
+                            <Image source={PlusGroup} />
+                            {/* <Feather style={{ backgroundColor: '#1B337C',padding:scale(6),borderRadius:scale(100)}} name="plus" color="white" size={28} /> */}
                             <Text style={{
-                                fontFamily: 'InterVariableFont', fontSize: scale(18), fontWeight: '700', textAlign: 'center', color: '#1B337C', marginTop: scale(3),
+                                fontFamily: 'InterVariableFont', fontSize: scale(18), fontWeight: '700', textAlign: 'center', color: '#1B337C',
                             }}>Add Car</Text>
                         </View>
-                        <FontAwesome6 style={{padding:scale(4)}}name="bars" color="#1B337C" size={26} />
+                        <FontAwesome6 style={{ padding: scale(6) }} name="bars" color="gray" size={26} />
                     </View>
 
 

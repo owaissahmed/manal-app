@@ -1,4 +1,4 @@
-import { View, Text, Image, SafeAreaView } from 'react-native';
+import { View, Text, Image, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
 import { scale } from 'react-native-size-matters';
 import Logo from '../../assets/images/logo.png';
@@ -14,76 +14,75 @@ export default function Signup({ navigation }) {
             <Background imageOpacity={0.1}>
 
                 {/* Main content wrapper */}
-                <View style={{
-                    alignItems: 'center',
-                    paddingVertical: scale(30),
-                    marginTop: scale(25)
-                }}>
-                    <Image
-                        source={Logo}
-                        style={{ height: scale(100), width: scale(100) }}
-                        resizeMode="contain"
-                    />
+                <Image
+                    source={Logo}
+                    style={{ alignSelf: "center", marginTop: scale(50), height: scale(100), width: scale(100) }}
+                    resizeMode="contain"
+                />
+                <ScrollView>
+                    <View style={{
+                        alignItems: 'center',
+                    }}>
 
-
-                    <TextField
-                        style={{
-                            width: scale(300),
-                            height: scale(45),
-                            backgroundColor: 'white',
-                            margin: scale(4)
-                        }}
-                        placeholder='Full Name'
-                    />
-                    <TextField
-                        style={{
-                            width: scale(300),
-                            height: scale(45),
-                            backgroundColor: 'white',
-                            margin: scale(4)
-                        }}
-                        placeholder='Mobile Number'
-                    />
-                    <TextField
-                        style={{
-                            width: scale(300),
-                            height: scale(45),
-                            backgroundColor: 'white',
-                            margin: scale(4)
-                        }}
-                        placeholder='Your Email'
-                    />
-                    <TextField
-                        ShowSecureTextEntry
-                        style={{
-                            width: scale(300),
-                            height: scale(45),
-                            margin: scale(4)
-                        }}
-                        placeholder='Password'
-                    />
-                    <TextField
-                        ShowSecureTextEntry
-                        style={{
-                            width: scale(300),
-                            height: scale(45),
-                            margin: scale(4)
-                        }}
-                        placeholder='Confirm Password'
-                    />
-                    <View style={{ marginTop: scale(20) }}>
-                        <Button
-                            style={{ backgroundColor: "#75B8F7" }}
-                            textStyle={{ color: 'white' }}
-                            onPress={() => navigation.navigate('Services')}
-                            title="Register"
-                            width={scale(300)}
-                            height={scale(45)}
+                        <TextField
+                            style={{
+                                width: scale(280),
+                                // height: scale(40),
+                                backgroundColor: 'white',
+                                margin: scale(4)
+                            }}
+                            placeholder='Full Name'
                         />
+                        <TextField
+                            style={{
+                                width: scale(280),
+                                // height: scale(40),
+                                backgroundColor: 'white',
+                                margin: scale(4)
+                            }}
+                            placeholder='Mobile Number'
+                        />
+                        <TextField
+                            style={{
+                                width: scale(280),
+                                // height: scale(40),
+                                backgroundColor: 'white',
+                                margin: scale(4)
+                            }}
+                            placeholder='Your Email'
+                        />
+                        <TextField
+                            ShowSecureTextEntry
+                            style={{
+                                width: scale(280),
+                                // height: scale(40),
+                                margin: scale(4)
+                            }}
+                            placeholder='Password'
+                        />
+                        <TextField
+                            ShowSecureTextEntry
+                            style={{
+                                width: scale(280),
+                                // height: scale(40),
+                                margin: scale(4)
+                            }}
+                            placeholder='Confirm Password'
+                        />
+                        <View style={{ marginTop: scale(20),marginBottom:scale(10)}}>
+                            <Button
+                backgroundColor={"#75B8F7"}
+                                textStyle={{ color: 'white' }}
+                                onPress={() => navigation.navigate('Services')}
+                                title="Register"
+                                width={scale(280)}
+                                height={scale(40)}
+                            />
+                        </View>
                     </View>
-                </View>
+                </ScrollView>
                 {/* Bottom text */}
-                <View style={{ alignItems: 'center', marginTop: scale(50) }}>
+                <View style={{ alignItems: 'center', marginBottom: scale(50) }}>
                     <Text style={{ color: 'white', fontSize: scale(12), fontFamily: 'InterVariableFont', }}>
                         I have an account{'   '}
                         <Text onPress={() => navigation.replace('Login')} style={{ color: "#770996", fontWeight: '700', textDecorationLine: 'underline' }}>

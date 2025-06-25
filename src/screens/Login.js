@@ -1,4 +1,4 @@
-import { View, Text, Image, SafeAreaView } from 'react-native';
+import { View, Text, Image, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
 import { scale } from 'react-native-size-matters';
 import Logo from '../../assets/images/logo.png';
@@ -13,22 +13,21 @@ export default function Login({ navigation }) {
     <SafeAreaView style={{ flex: 1 }}>
       <Background imageOpacity={0.1}>
 
-          {/* Main content wrapper */}
+        {/* Main content wrapper */}
+        <Image
+          source={Logo}
+          style={{ alignSelf: "center", marginTop: scale(50), height: scale(100), width: scale(100) }}
+          resizeMode="contain"
+        />
+        <ScrollView>
           <View style={{
             alignItems: 'center',
-            paddingVertical: scale(30),
-            marginTop: scale(25)
           }}>
-            <Image
-              source={Logo}
-              style={{ height: scale(100), width: scale(100) }}
-              resizeMode="contain"
-            />
 
             <TextField
               style={{
-                width: scale(300),
-                height: scale(45),
+                width: scale(280),
+                // height: scale(40),
                 backgroundColor: 'white',
                 margin: scale(4)
               }}
@@ -38,8 +37,8 @@ export default function Login({ navigation }) {
             <TextField
               ShowSecureTextEntry
               style={{
-                width: scale(300),
-                height: scale(45),
+                width: scale(280),
+                // height: scale(40),
                 margin: scale(4)
               }}
               placeholder='Your Password'
@@ -57,14 +56,14 @@ export default function Login({ navigation }) {
               Forgot your password?
             </Text>
 
-            <View style={{ marginTop: scale(20) }}>
+            <View style={{ marginTop: scale(20), marginBottom: scale(10) }}>
               <Button
-                style={{ backgroundColor: "#75B8F7" }}
                 textStyle={{ color: 'white' }}
                 onPress={() => navigation.navigate('Services')}
                 title="Sign in"
-                width={scale(300)}
-                height={scale(45)}
+                width={scale(280)}
+                height={scale(40)}
+                backgroundColor={"#75B8F7"}
               />
             </View>
 
@@ -98,22 +97,24 @@ export default function Login({ navigation }) {
             <View style={{
               flexDirection: 'row',
               justifyContent: 'space-around',
-              width: scale(100)
+              width: scale(100),
+              marginBottom:scale(10)
             }}>
               <Image source={Google} />
               <Image source={Apple} />
             </View>
           </View>
 
-          {/* Bottom text */}
-          <View style={{ alignItems: 'center', marginTop: scale(130) }}>
-            <Text style={{ color: 'white',fontSize:scale(12) ,fontFamily: 'InterVariableFont',}}>
-              Dont have an account?{'  '}
-              <Text onPress={()=> navigation.replace('Signup')} style={{ color:"#770996",fontWeight:'700',textDecorationLine: 'underline' }}>
-                Sign up
-              </Text>
+        </ScrollView>
+        {/* Bottom text */}
+        <View style={{ alignItems: 'center', marginBottom: scale(50) }}>
+          <Text style={{ color: 'white', fontSize: scale(12), fontFamily: 'InterVariableFont', }}>
+            Dont have an account?{'  '}
+            <Text onPress={() => navigation.replace('Signup')} style={{ color: "#770996", fontWeight: '700', textDecorationLine: 'underline' }}>
+              Sign up
             </Text>
-          </View>
+          </Text>
+        </View>
 
       </Background>
     </SafeAreaView>

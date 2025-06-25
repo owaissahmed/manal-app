@@ -9,7 +9,7 @@ import Button from '../components/button';
 
 export default function Home({ navigation }) {
   return (
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <Background imageOpacity={0.1}>
         <View
           style={{
@@ -20,8 +20,8 @@ export default function Home({ navigation }) {
           <Image
             source={Logo}
             style={{
-              height: scale(90),
-              width: scale(90),
+              height: scale(100),
+              width: scale(100),
             }}
             resizeMode="contain"
           />
@@ -30,7 +30,7 @@ export default function Home({ navigation }) {
             style={{
               height: scale(200),
               width: scale(320),
-              marginVertical: scale(30),
+              marginVertical: scale(20),
             }}
             resizeMode="contain"
           />
@@ -67,11 +67,12 @@ export default function Home({ navigation }) {
           >
             <Button
               onPress={() => navigation.navigate('Login')}
+              backgroundColor={"#fff"}
               title="Login" width={scale(280)} height={scale(40)} />
             <Button onPress={() => navigation.navigate('Signup')}
-              title="Register" width={scale(280)} height={scale(40)} />
+              title="Register" backgroundColor={"#fff"} width={scale(280)} height={scale(40)} />
             <Button onPress={() => navigation.navigate('Services')}
-              title="Guest User" width={scale(280)} height={scale(40)} />
+              title="Guest User" backgroundColor={"#fff"} width={scale(280)} height={scale(40)} />
           </View>
         </View>
       </Background>

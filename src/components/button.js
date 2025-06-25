@@ -2,12 +2,12 @@ import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
-const Button = ({ title, onPress, width, height, style, textStyle }) => (
+const Button = ({ title, onPress, width, height, style, textStyle, backgroundColor }) => (
   <TouchableOpacity
     onPress={onPress}
     style={[
       {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: backgroundColor,
         borderRadius: 12,
         alignItems: 'center',
         justifyContent: 'center',

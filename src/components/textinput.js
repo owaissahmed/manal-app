@@ -80,7 +80,8 @@ const TextField = ({
                     onChangeText={iscustomeFunction}
                     underlineColorAndroid="transparent"
                     secureTextEntry={isSecureVisible}
-                    placeholderTextColor={'silver'}
+                    placeholderTextColor={'grey'}
+                    // fontSize={scale(14)}
                     multiline={multiline}
 
                     {...otherProps}
@@ -137,10 +138,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     input: {
-        paddingVertical: 14,
+        // paddingVertical: 14,
         paddingHorizontal: 15,
         color: "#000000",
-        fontSize: scale(16),
+        fontSize: scale(15),
         flex: 1,
         // fontFamily: 'CHANGAN-REGULAR',
     },
@@ -161,7 +162,7 @@ const styles = StyleSheet.create({
         marginRight: 15,
     },
     textarea: {
-        minHeight: scale(150),
-        textAlignVertical: 'top'
+        // minHeight: scale(150),
+        // textAlignVertical: 'top'
     },
 });

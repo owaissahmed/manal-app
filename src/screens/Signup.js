@@ -21,7 +21,7 @@ export default function Signup({ navigation }) {
                 }}>
                     <Image
                         source={Logo}
-                        style={{ height: scale(80), width: scale(80) }}
+                        style={{ height: scale(100), width: scale(100) }}
                         resizeMode="contain"
                     />
 
@@ -75,7 +75,7 @@ export default function Signup({ navigation }) {
                         <Button
                             style={{ backgroundColor: "#75B8F7" }}
                             textStyle={{ color: 'white' }}
-                            onPress={() => navigation.navigate('Login')}
+                            onPress={() => navigation.navigate('Services')}
                             title="Register"
                             width={scale(300)}
                             height={scale(45)}
@@ -83,10 +83,10 @@ export default function Signup({ navigation }) {
                     </View>
                 </View>
                 {/* Bottom text */}
-                <View style={{ alignItems: 'center' ,marginTop:scale(50)}}>
-                    <Text style={{ color: 'white',fontSize:scale(12),fontFamily: 'InterVariableFont', }}>
+                <View style={{ alignItems: 'center', marginTop: scale(50) }}>
+                    <Text style={{ color: 'white', fontSize: scale(12), fontFamily: 'InterVariableFont', }}>
                         I have an account{'   '}
-                        <Text onPress={()=> navigation.replace('Login')} style={{color:"#770996",fontWeight:'700', textDecorationLine: 'underline' }}>
+                        <Text onPress={() => navigation.replace('Login')} style={{ color: "#770996", fontWeight: '700', textDecorationLine: 'underline' }}>
                             Login
                         </Text>
                     </Text>

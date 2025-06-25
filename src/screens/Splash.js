@@ -25,7 +25,7 @@ export default function Splash({ navigation }) {
 
         {/* Logos View */}
         <View style={{ alignItems: 'center', marginTop: scale(140), marginBottom: scale(45) }}>
-          <Image source={Logo} style={{ height: scale(80), width: scale(80) }} />
+          <Image source={Logo} style={{ height: scale(100), width: scale(100) }} />
           <Image source={AlManalText} style={{ marginTop: scale(10) }} />
         </View>
 

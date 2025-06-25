@@ -21,7 +21,7 @@ export default function Login({ navigation }) {
           }}>
             <Image
               source={Logo}
-              style={{ height: scale(80), width: scale(80) }}
+              style={{ height: scale(100), width: scale(100) }}
               resizeMode="contain"
             />
 
@@ -61,7 +61,7 @@ export default function Login({ navigation }) {
               <Button
                 style={{ backgroundColor: "#75B8F7" }}
                 textStyle={{ color: 'white' }}
-                onPress={() => navigation.navigate('Login')}
+                onPress={() => navigation.navigate('Services')}
                 title="Sign in"
                 width={scale(300)}
                 height={scale(45)}

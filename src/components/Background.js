@@ -64,6 +64,12 @@ const styles = StyleSheet.create({
         height: scale(320),
         width: scale(420),
     },
+    content: {
+        flex: 1,
+        // justifyContent: 'center',   // center vertically
+        // alignItems: 'center',       // center horizontally
+    },
+
 });
 
 export default Background;

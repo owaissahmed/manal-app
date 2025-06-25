@@ -24,7 +24,7 @@ const Services = ({ navigation }) => {
                             flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-end', marginRight: scale(15), paddingTop: scale(10)
                         }}>
                         <Ionicons name="location-outline" color="black" size={20} />
-                        <Text style={{ color: '#13418C' }}>{startingAddress}</Text>
+                        <Text style={{fontFamily: 'InterVariableFont', color: '#13418C' }}>{startingAddress}</Text>
                         <Feather name="chevron-down" color="black" size={22} />
                     </View>
                     <View style={{ gap: scale(15), marginBottom: scale(10) }}>

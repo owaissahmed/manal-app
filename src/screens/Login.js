@@ -1,4 +1,4 @@
-import { View, Text, Image, SafeAreaView, ScrollView } from 'react-native';
+import { View, Image, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
 import { scale } from 'react-native-size-matters';
 import Logo from '../../assets/images/logo.png';
@@ -6,12 +6,14 @@ import Apple from '../../assets/images/apple.png';
 import Google from '../../assets/images/google.png';
 import Background from '../components/Background';
 import Button from '../components/button';
+import Text from '../components/Text';
 import TextField from '../components/textinput';
+import HalfCar from '../../assets/images/halfcar.png'; // low-opacity bg image
 
 export default function Login({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Background imageOpacity={0.1}>
+      <Background height={scale(320)} width={scale(420)} BackgroundImage={HalfCar} imageOpacity={0.1}>
 
         {/* Main content wrapper */}
         <Image
@@ -25,6 +27,7 @@ export default function Login({ navigation }) {
           }}>
 
             <TextField
+              fontSize={scale(16)}
               style={{
                 width: scale(280),
                 // height: scale(40),
@@ -36,61 +39,49 @@ export default function Login({ navigation }) {
 
             <TextField
               ShowSecureTextEntry
+              fontSize={scale(16)}
               style={{
                 width: scale(280),
                 // height: scale(40),
-                margin: scale(4)
+                margin: scale(4),
               }}
               placeholder='Your Password'
             />
 
             <Text style={{
-              fontFamily: "InterVariableFont",
-              fontWeight: '400',
-              fontSize: scale(13),
-              color: '#13418C',
               marginTop: scale(2),
               alignSelf: 'flex-end',
               marginRight: scale(25)
-            }}>
+            }} color='#13418C' fontWeight="400" fontSize={scale(16)}>
               Forgot your password?
             </Text>
 
+
             <View style={{ marginTop: scale(20), marginBottom: scale(10) }}>
-              <Button
-                textStyle={{ color: 'white' }}
-                onPress={() => navigation.navigate('Services')}
-                title="Sign in"
-                width={scale(280)}
-                height={scale(40)}
-                backgroundColor={"#75B8F7"}
-              />
+              <Button onPress={() => navigation.navigate('Services')}
+                title="Sign in" color={"#F7F6FC"} fontWeight="700" fontSize={scale(16)} backgroundColor={"#75B8F7"} width={scale(280)} height={scale(40)} />
             </View>
 
             <View style={{
               flexDirection: 'row',
               alignItems: 'center',
-              marginVertical: 30
+              marginVertical: scale(16),
+              marginHorizontal:scale(20)
             }}>
               <View style={{
                 flex: 1,
-                height: 1,
+                height:scale(1),
                 backgroundColor: '#B65FCF',
-                marginHorizontal: scale(20)
+                marginHorizontal: scale(15)
               }} />
-              <Text style={{
-                fontWeight: '700',
-                fontFamily: 'InterVariableFont',
-                fontSize: scale(12),
-                color: '#13418C'
-              }}>
+              <Text color={'#13418C'} fontWeight="700" fontSize={scale(14)}>
                 Or sign in with
               </Text>
               <View style={{
                 flex: 1,
-                height: 1,
+                height:scale(1),
                 backgroundColor: '#B65FCF',
-                marginHorizontal: scale(20)
+                marginHorizontal: scale(15)
               }} />
             </View>
 
@@ -98,7 +89,7 @@ export default function Login({ navigation }) {
               flexDirection: 'row',
               justifyContent: 'space-around',
               width: scale(100),
-              marginBottom:scale(10)
+              marginBottom: scale(10)
             }}>
               <Image source={Google} />
               <Image source={Apple} />
@@ -107,10 +98,10 @@ export default function Login({ navigation }) {
 
         </ScrollView>
         {/* Bottom text */}
-        <View style={{ alignItems: 'center', marginBottom: scale(50) }}>
-          <Text style={{ color: 'white', fontSize: scale(12), fontFamily: 'InterVariableFont', }}>
+        <View style={{ alignItems: 'center', marginBottom: scale(75) }}>
+          <Text  color= 'white' fontWeight='400' fontSize={scale(16)}>
             Dont have an account?{'  '}
-            <Text onPress={() => navigation.replace('Signup')} style={{ color: "#770996", fontWeight: '700', textDecorationLine: 'underline' }}>
+            <Text onPress={() => navigation.replace('Signup')} fontSize={scale(14)} color="#812AA1" fontWeight='700' style={{ textDecorationLine: 'underline' }}>
               Sign up
             </Text>
           </Text>

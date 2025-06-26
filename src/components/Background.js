@@ -1,42 +1,11 @@
-// import { View, Text, StyleSheet, Image } from 'react-native'
-// import React from 'react'
-// import { scale } from 'react-native-size-matters'
-// import HalfCar from '../../assets/images/halfcar.png'
-// import LinearGradient from 'react-native-linear-gradient'
 
-// const Background = ({ children, showImage = true, imageOpacity = 1 }) => (
-//   <LinearGradient colors={['#70BEFD', '#AA7EB4']} style={styles.linearGradient}>
-//     {children}
-//     {showImage && (
-//       <Image
-//         source={HalfCar}
-//         style={[styles.halfCar, { opacity: imageOpacity }]}
-//         resizeMode="contain"
-//       />
-//     )}
-//   </LinearGradient>
-// )
-
-// const styles = StyleSheet.create({
-//   linearGradient: {
-//     flex: 1,
-//     justifyContent: 'space-between',
-//   },
-//   halfCar: {
-//     height: scale(320),
-//     width: scale(420),
-//     alignSelf: 'center',
-//   },
-// })
-
-// export default Background
 import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { scale } from 'react-native-size-matters';
-import BackgroundImage from '../../assets/images/halfcar.png'; // low-opacity bg image
+// import BackgroundImage from '../../assets/images/halfcar.png'; // low-opacity bg image
 
-const Background = ({ children, showImage = true, imageOpacity = 1 }) => (
+const Background = ({ children, showImage = true,BackgroundImage, width,height,imageOpacity = 1 }) => (
     <View style={styles.container}>
         <LinearGradient
             colors={['#70BEFD', '#AA7EB4']}
@@ -45,7 +14,7 @@ const Background = ({ children, showImage = true, imageOpacity = 1 }) => (
         {showImage && (
             <Image
                 source={BackgroundImage}
-                style={[styles.backgroundImage, { opacity: imageOpacity }]}
+                style={[styles.backgroundImage, {width,height, opacity: imageOpacity }]}
                 resizeMode="contain"
             />
         )}
@@ -61,8 +30,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         alignSelf: 'center',
-        height: scale(320),
-        width: scale(420),
+        // height: scale(320),
+        // width: scale(420),
     },
     content: {
         flex: 1,

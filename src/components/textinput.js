@@ -29,6 +29,7 @@ const TextField = ({
     isCustom = false,
     style,
     multilineStyle,
+    fontSize=fontSize,
     customSet = () => { },
     ...otherProps
 }) => {
@@ -74,6 +75,7 @@ const TextField = ({
                         multiline && styles.textarea, multilineStyle
                     ]}
                     autoCapitalize="none"
+                    allowFontScaling={false}
                     onFocus={() => setFocused(true)}
                     onEndEditing={() => setFocused(false)}
                     ref={(ref) => { inputRef.current = ref }}
@@ -81,7 +83,7 @@ const TextField = ({
                     underlineColorAndroid="transparent"
                     secureTextEntry={isSecureVisible}
                     placeholderTextColor={'grey'}
-                    // fontSize={scale(14)}
+                    fontSize={fontSize}
                     multiline={multiline}
 
                     {...otherProps}
@@ -102,7 +104,7 @@ const TextField = ({
                             <Icon
                                 name={isSecureVisible ? 'eye-off' : 'eye'}
                                 color={'black'}
-                                size={20}
+                                size={(scale(18))}
                             />
                         </TouchableOpacity>
                     </View>

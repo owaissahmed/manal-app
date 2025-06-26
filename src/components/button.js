@@ -1,8 +1,8 @@
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
-import { scale } from 'react-native-size-matters';
+import { TouchableOpacity } from 'react-native';
+import Text from './Text';
 
-const Button = ({ title, onPress, width, height, style, textStyle, backgroundColor }) => (
+const Button = ({ title, onPress, width, height, style, fontSize, fontWeight, backgroundColor, color }) => (
   <TouchableOpacity
     onPress={onPress}
     style={[
@@ -19,19 +19,9 @@ const Button = ({ title, onPress, width, height, style, textStyle, backgroundCol
       style,
     ]}
   >
-    <Text
-      style={[
-        {
-          color: '#1B337C',
-          fontWeight: '700',
-          fontSize: scale(15),
-          fontFamily: 'InterVariableFont',
-        },
-        textStyle,
-      ]}
-    >
-      {title}
-    </Text>
+    <Text color={color} fontWeight={fontWeight}
+      fontSize={fontSize}
+    >{title}</Text>
   </TouchableOpacity>
 );
 

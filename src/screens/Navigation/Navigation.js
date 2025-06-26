@@ -5,6 +5,7 @@ import Login from "../Login";
 import CarWash from "../CarWash";
 import Signup from "../Signup";
 import Services from "../Services";
+import AddCar from "../AddCar";
 const Navigation = () => {
     const Stack = createNativeStackNavigator();
     return (
@@ -13,6 +14,7 @@ const Navigation = () => {
             <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
             <Stack.Screen name="Signup" component={Signup} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: 'CREATE AN ACCOUNT' }} />
             <Stack.Screen name="CarWash" component={CarWash} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: 'CAR WASH' }} />
+            <Stack.Screen name="AddCar" component={AddCar} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: 'ADD A CAR' }} />
             <Stack.Screen name="Login" component={Login} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" } }} />
             <Stack.Screen name="Services" component={Services} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: 'OUR SERVICES' }} />
         </Stack.Navigator>

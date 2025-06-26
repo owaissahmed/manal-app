@@ -1,4 +1,4 @@
-import { View, SafeAreaView, Image } from 'react-native';
+import { View, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 import Background from '../components/Background';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -19,7 +19,7 @@ const Services = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-      <Background height={scale(320)} width={scale(420)} BackgroundImage={HalfCar} imageOpacity={0.1}>
+            <Background height={scale(320)} width={scale(420)} BackgroundImage={HalfCar} imageOpacity={0.1}>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-between', marginTop: scale(30) }}>
                     <View
                         style={{
@@ -29,7 +29,7 @@ const Services = ({ navigation }) => {
                         <Text fontWeight='400' fontSize={scale(16)} color='#13418C'>{startingAddress}</Text>
                         <Feather name="chevron-down" color="black" size={(scale(18))} />
                     </View>
-                    <View style={{ gap: scale(15),marginTop:scale(-20) }}>
+                    <View style={{ gap: scale(15), marginTop: scale(-20) }}>
                         <View
                             style={{
                                 width: scale(175), height: scale(175), paddingVertical: scale(16), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(20), backgroundColor: 'white',
@@ -54,7 +54,7 @@ const Services = ({ navigation }) => {
                         </View>
                     </View>
                     <View
-                        style={{ marginTop:scale(-20),width: scale(280), paddingHorizontal: scale(30), paddingVertical: scale(10), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), backgroundColor: 'white', }}>
+                        style={{ marginTop: scale(-20), width: scale(280), paddingHorizontal: scale(30), paddingVertical: scale(10), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), backgroundColor: 'white', }}>
                         <View
                             style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
                             <View>
@@ -70,8 +70,8 @@ const Services = ({ navigation }) => {
                             </View>
                             <Feather name="chevron-down" color="gray" size={(scale(18))} />
                         </View>
-                        <View style={{ marginTop: scale(6), alignSelf: "center", paddingHorizontal: scale(30)}}>
-                            <Button onPress={() => navigation.navigate('CarWash')} style={{borderRadius:scale(5)}}
+                        <View style={{ marginTop: scale(6), alignSelf: "center", paddingHorizontal: scale(30) }}>
+                            <Button onPress={() => navigation.navigate('CarWash')} style={{ borderRadius: scale(5) }}
                                 title="ORDER NOW" color={"#ffffff"} fontWeight="700" fontSize={scale(15)} backgroundColor={"#74BAF8"} width={scale(220)} height={scale(40)} />
                         </View>
                     </View>
@@ -80,12 +80,14 @@ const Services = ({ navigation }) => {
                             flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', alignSelf: 'center', paddingHorizontal: scale(20), paddingVertical: scale(5), borderColor: '#13418C', backgroundColor: 'white',
                         }}>
                         <MaterialIcons style={{ padding: scale(4) }} name="notifications-none" color="gray" size={(scale(28))} />
-                        <View style={{ alignItems: 'center', marginTop: scale(-15) }}>
-                            <Image source={PlusGroup} />
-                            {/* <Feather style={{ backgroundColor: '#1B337C',padding:scale(6),borderRadius:scale(100)}} name="plus" color="white" size={28} /> */}
-                            <Text fontWeight='700' fontSize={scale(20)} color='#13418C' style={{
-                                textAlign: 'center',
-                            }}>Add Car</Text>
+                        <View style={{  marginTop: scale(-15) }}>
+                            <TouchableOpacity onPress={() => navigation.navigate('AddCar')} style={{alignItems: 'center',}}>
+                                <Image source={PlusGroup} />
+                                {/* <Feather style={{ backgroundColor: '#1B337C',padding:scale(6),borderRadius:scale(100)}} name="plus" color="white" size={28} /> */}
+                                <Text fontWeight='700' fontSize={scale(20)} color='#13418C' style={{
+                                    textAlign: 'center',
+                                }}>Add Car</Text>
+                            </TouchableOpacity>
                         </View>
                         <FontAwesome6 style={{ padding: scale(6) }} name="bars" color="gray" size={(scale(22))} />
                     </View>

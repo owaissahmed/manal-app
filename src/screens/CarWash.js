@@ -78,7 +78,7 @@ export default function CarWash({navigation}) {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <Background height={scale(420)} width={scale(420)} BackgroundImage={FullCar} imageOpacity={0.1}>
+            <Background height={scale(480)} width={scale(460)} BackgroundImage={FullCar} imageOpacity={0.1}>
                 <View
                     style={{
                         // alignItems: 'center',
@@ -171,7 +171,7 @@ export default function CarWash({navigation}) {
                             </View>
                         </View>
                         <View style={{ marginTop: scale(6), alignSelf: "center", }}>
-                            <Button onPress={() => navigation.navigate('CarWash')} style={{ borderRadius: scale(5) }}
+                            <Button onPress={() => navigation.navigate('AddCar')} style={{ borderRadius: scale(5) }}
                                 title="Next" color={"#ffffff"} fontWeight="700" fontSize={scale(16)} backgroundColor={"#72BBFA"} width={scale(100)} height={scale(40)} />
                         </View>
                     </View>

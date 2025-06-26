@@ -29,7 +29,8 @@ const TextField = ({
     isCustom = false,
     style,
     multilineStyle,
-    fontSize=fontSize,
+    fontSize = fontSize,
+    borderColor,
     customSet = () => { },
     ...otherProps
 }) => {
@@ -62,7 +63,7 @@ const TextField = ({
             </View>
             <View style={[
                 styles.inputContainer,
-                style, { marginTop: label ? '2%' : "5%" },
+                style, { marginTop: label ? '2%' : "5%", borderColor: borderColor || '#13418C' },
                 // isFocused && styles.inputContainerActive,
                 error && styles.inputContainerError,
             ]}
@@ -85,7 +86,7 @@ const TextField = ({
                     placeholderTextColor={'grey'}
                     fontSize={fontSize}
                     multiline={multiline}
-
+                    borderColor={borderColor}
                     {...otherProps}
                 />
                 {renderRightComponent && (
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         borderRadius: 12,
         borderWidth: 1,
-        borderColor: '#13418C',
+        // borderColor: '#13418C',
         backgroundColor: 'white'
     },
     input: {
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
         // fontFamily: 'CHANGAN-REGULAR',
     },
     _inputContainerActive: {
-          borderColor: '#13418C',
+        borderColor: '#13418C',
     },
     get inputContainerActive() {
         return this._inputContainerActive;

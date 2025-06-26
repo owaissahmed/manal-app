@@ -28,6 +28,8 @@ export default function Login({ navigation }) {
 
             <TextField
               fontSize={scale(16)}
+                      borderColor= '#13418C'
+
               style={{
                 width: scale(280),
                 // height: scale(40),

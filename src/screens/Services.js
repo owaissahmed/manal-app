@@ -81,7 +81,7 @@ const Services = ({ navigation }) => {
                         }}>
                         <MaterialIcons style={{ padding: scale(4) }} name="notifications-none" color="gray" size={(scale(28))} />
                         <View style={{  marginTop: scale(-15) }}>
-                            <TouchableOpacity onPress={() => navigation.navigate('AddCar')} style={{alignItems: 'center',}}>
+                            <TouchableOpacity onPress={() => navigation.navigate('AddCarPhoto')} style={{alignItems: 'center',}}>
                                 <Image source={PlusGroup} />
                                 {/* <Feather style={{ backgroundColor: '#1B337C',padding:scale(6),borderRadius:scale(100)}} name="plus" color="white" size={28} /> */}
                                 <Text fontWeight='700' fontSize={scale(20)} color='#13418C' style={{

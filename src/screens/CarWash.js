@@ -104,7 +104,7 @@ export default function CarWash({navigation}) {
                         justifyContent: 'space-around',
                         marginVertical: scale(6),
                         borderRadius: scale(5),
-                        paddingVertical: 10,
+                        paddingVertical: scale(6),
                         marginBottom: 15, backgroundColor: 'white', width: scale(320),
                     }}>
                         {vehicleTypes.map((type) => (

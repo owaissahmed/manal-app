@@ -8,6 +8,7 @@ import {
 import React, { useState, useRef } from 'react';
 // import Colors from '../../themes/Colors';
 import Icon from 'react-native-vector-icons/Feather';
+import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 // import Text from './Text';
 import { scale } from 'react-native-size-matters';
@@ -23,6 +24,7 @@ const TextField = ({
     renderRightComponent,
     secureTextEntry,
     ShowSecureTextEntry,
+    Search,
     multiline,
     info,
     infoContent,
@@ -60,6 +62,7 @@ const TextField = ({
                         />
                     </TouchableOpacity>
                 }
+                
             </View>
             <View style={[
                 styles.inputContainer,
@@ -68,6 +71,15 @@ const TextField = ({
                 error && styles.inputContainerError,
             ]}
             >
+                {Search && (
+                    <View
+                        style={styles.leftContainer}
+                    >
+                        <TouchableOpacity>
+                            <Feather style={{ paddingLeft: scale(8), paddingVertical: scale(6) }} name="search" color="grey" size={scale(22)} />
+                        </TouchableOpacity>
+                    </View>
+                )}
                 <RNTextInput
                     defaultValue={initialValue}
                     value={value}
@@ -110,6 +122,7 @@ const TextField = ({
                         </TouchableOpacity>
                     </View>
                 )}
+                
             </View>
         </View>
     );
@@ -163,6 +176,9 @@ const styles = StyleSheet.create({
     },
     rightContainer: {
         marginRight: 15,
+    },
+    leftContainer: {
+        // marginLeft: scale(10),
     },
     textarea: {
         // minHeight: scale(150),

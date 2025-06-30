@@ -1,5 +1,5 @@
 import { Image, SafeAreaView, ScrollView, TouchableOpacity, View } from 'react-native'
-import React ,{useState}from 'react'
+import React, { useState } from 'react'
 import Background from '../components/Background'
 import CustomModal from '../components/CustomModal';
 import CarSport from '../../assets/images/carSport.png';
@@ -67,19 +67,25 @@ export default function AddCarPhoto({ navigation }) {
                         />
                         <View style={{ marginTop: scale(20), marginBottom: scale(10) }}>
                             <Button onPress={() => navigation.navigate('AddCar')}
-                            // {/* <Button onPress={() => setModalVisible(true)} */}
+                                // {/* <Button onPress={() => setModalVisible(true)} */}
                                 title="CONTINUE" color={"#fff"} fontWeight="700" fontSize={scale(16)} backgroundColor={"#72BBFA"} width={scale(280)} height={scale(40)} />
                         </View>
                         {/*  */}
                         <CustomModal
-                        // height={scale(600)}
-                        // ScrollHeight={scale(800)}
+                            // height={scale(400)}
+                            width={scale(280)}
+                            // ScrollHeight={scale(800)}
                             visible={modalVisible}
+                            closeIcon
+                            backgroundColor={'#FFFFFF'}
+                            borderWidth={scale(5)}
+                            borderRadius={scale(12)}
+                            borderColor={'black'}
                             onClose={() => setModalVisible(false)}
                             imageSource={CarSport}
                             message="please add your car to complete your order"
                         >
-                            <View style={{ marginTop: scale(10) }}>
+                            <View style={{ marginVertical: scale(10) }}>
                                 <Button
                                     onPress={() => {
                                         setModalVisible(false);

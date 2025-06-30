@@ -7,13 +7,17 @@ import Fontisto from "react-native-vector-icons/Fontisto";
 const CustomModal = ({
   visible,
   onClose,
+  closeIcon,
   imageSource,
   message,
   children,
-  height = height,
-  width = scale(280),
-  ScrollHeight = ScrollHeight,
-//   width = scale(280),
+  height,
+  width,
+  backgroundColor,
+  borderWidth,
+  borderColor,
+  ScrollHeight,
+  borderRadius, //   width = scale(280),
 }) => {
   return (
     <Modal
@@ -24,7 +28,7 @@ const CustomModal = ({
     >
       <View style={styles.modalBackground}>
         <View style={[styles.modalContainer, { height, width }]}>
-          {/* Close Icon */}
+          {closeIcon &&
           <Fontisto
             onPress={onClose}
             style={styles.closeIcon}
@@ -32,9 +36,9 @@ const CustomModal = ({
             color="#000"
             size={scale(28)}
           />
-
+          }
           {/* Scrollable Content */}
-          <ScrollView contentContainerStyle={styles.scrollContent} style={{height:ScrollHeight}}>
+          <ScrollView contentContainerStyle={styles.scrollContent} style={{ borderRadius:borderRadius,height: ScrollHeight, backgroundColor: backgroundColor, borderWidth: borderWidth ,borderColor:borderColor}}>
             {/* Optional Image */}
             {imageSource && (
               <Image
@@ -71,21 +75,24 @@ const styles = StyleSheet.create({
   modalContainer: {
     borderRadius: scale(10),
     overflow: 'hidden',
+    // marginVertical: scale
   },
   closeIcon: {
+    marginVertical:scale(8),
     alignSelf: 'flex-end',
-    paddingHorizontal: scale(8),
-    paddingTop: scale(6),
+    borderRadius:scale(20),
+    // paddingHorizontal: scale(8),
+    // paddingTop: scale(6),
+    backgroundColor:'white'
   },
   scrollContent: {
-    backgroundColor: 'white',
-    marginTop:scale(6),
-    paddingHorizontal: scale(20),
-    paddingBottom: scale(20),
+    paddingVertical: scale(10),
     alignItems: 'center',
-    borderColor:'black',
-    borderRadius:scale(12),
-    borderWidth:scale(5)
+    // marginTop: scale(6),
+    // paddingHorizontal: scale(20),
+    // paddingBottom: scale(20),
+    // borderColor:'black',
+    // borderRadius: scale(15),
   },
   image: {
     height: scale(140),

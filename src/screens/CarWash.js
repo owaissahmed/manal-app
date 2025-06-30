@@ -151,7 +151,7 @@ export default function CarWash({navigation}) {
                 {selectedServiceIds.length > 0 &&
                     <View
                         style={{
-                            paddingHorizontal: scale(10), flexDirection: "row", alignItems: "center", alignSelf: 'center', justifyContent: "space-between", marginTop: scale(-30), width: ("100%"), paddingHorizontal: scale(20), paddingVertical: scale(20), borderTopStartRadius: scale(10), borderTopEndRadius: scale(10), backgroundColor: 'white',
+                            paddingHorizontal: scale(10), flexDirection: "row", alignItems: "center", alignSelf: 'center', justifyContent: "space-between", marginTop: scale(-20), width: ("100%"), paddingHorizontal: scale(20), paddingVertical: scale(20), borderTopStartRadius: scale(10), borderTopEndRadius: scale(10), backgroundColor: 'white',
                         }}>
                         <View
                             style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>

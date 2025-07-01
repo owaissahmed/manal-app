@@ -29,16 +29,16 @@ const CustomModal = ({
       <View style={styles.modalBackground}>
         <View style={[styles.modalContainer, { height, width }]}>
           {closeIcon &&
-          <Fontisto
-            onPress={onClose}
-            style={styles.closeIcon}
-            name="close"
-            color="#000"
-            size={scale(28)}
-          />
+            <Fontisto
+              onPress={onClose}
+              style={styles.closeIcon}
+              name="close"
+              color="#000"
+              size={scale(28)}
+            />
           }
           {/* Scrollable Content */}
-          <ScrollView contentContainerStyle={styles.scrollContent} style={{ borderRadius:borderRadius,height: ScrollHeight, backgroundColor: backgroundColor, borderWidth: borderWidth ,borderColor:borderColor}}>
+          <ScrollView contentContainerStyle={styles.scrollContent} style={{ borderRadius: borderRadius, height: ScrollHeight, backgroundColor: backgroundColor, borderWidth: borderWidth, borderColor: borderColor }}>
             {/* Optional Image */}
             {imageSource && (
               <Image
@@ -50,7 +50,9 @@ const CustomModal = ({
 
             {/* Optional Message */}
             {message && (
-              <Text style={styles.modalText}>
+              <Text allowFontScaling={false}
+                style={styles.modalText}>
+
                 {message}
               </Text>
             )}
@@ -78,12 +80,12 @@ const styles = StyleSheet.create({
     // marginVertical: scale
   },
   closeIcon: {
-    marginVertical:scale(8),
+    marginVertical: scale(8),
     alignSelf: 'flex-end',
-    borderRadius:scale(20),
+    borderRadius: scale(20),
     // paddingHorizontal: scale(8),
     // paddingTop: scale(6),
-    backgroundColor:'white'
+    backgroundColor: 'white'
   },
   scrollContent: {
     paddingVertical: scale(10),
@@ -101,6 +103,7 @@ const styles = StyleSheet.create({
   },
   modalText: {
     marginBottom: scale(10),
+    marginHorizontal: scale(10),
     fontSize: scale(15),
     textAlign: 'center',
     fontWeight: '600',

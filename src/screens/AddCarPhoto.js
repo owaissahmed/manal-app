@@ -21,7 +21,7 @@ export default function AddCarPhoto({ navigation }) {
                         marginTop: scale(60),
                         alignItems: 'center',
                     }}>
-                        <TouchableOpacity onPress={() => setModalVisible(true)} style={{ alignItems: 'center', justifyContent: 'center', gap: scale(20), backgroundColor: "white", borderRadius: scale(20), height: scale(170), borderColor: 'black', borderWidth: scale(1), borderStyle: 'dashed', marginBottom: scale(18), width: scale(280) }}>
+                        <TouchableOpacity onPress={() => navigation.navigate('CarVehicle')} style={{ alignItems: 'center', justifyContent: 'center', gap: scale(20), backgroundColor: "white", borderRadius: scale(20), height: scale(170), borderColor: 'black', borderWidth: scale(1), borderStyle: 'dashed', marginBottom: scale(18), width: scale(280) }}>
                             <AntDesign style={{ paddingHorizontal: scale(8), paddingVertical: scale(6), borderRadius: scale(10), backgroundColor: '#74B9F8' }} name="plus" color="#ffffff" size={scale(22)} />
                             <Text style={{ textTransform: 'uppercase' }} color={'#770996'} fontWeight="700" fontSize={scale(16)}>
                                 attach car photo
@@ -66,8 +66,8 @@ export default function AddCarPhoto({ navigation }) {
                             placeholder='CITY'
                         />
                         <View style={{ marginTop: scale(20), marginBottom: scale(10) }}>
-                            <Button onPress={() => navigation.navigate('AddCar')}
-                                // {/* <Button onPress={() => setModalVisible(true)} */}
+                            {/* <Button onPress={() => navigation.navigate('AddCar')} */}
+                                <Button onPress={() => setModalVisible(true)}
                                 title="CONTINUE" color={"#fff"} fontWeight="700" fontSize={scale(16)} backgroundColor={"#72BBFA"} width={scale(280)} height={scale(40)} />
                         </View>
                         {/*  */}
@@ -78,7 +78,7 @@ export default function AddCarPhoto({ navigation }) {
                             visible={modalVisible}
                             closeIcon
                             backgroundColor={'#FFFFFF'}
-                            borderWidth={scale(5)}
+                            borderWidth={scale(1)}
                             borderRadius={scale(12)}
                             borderColor={'black'}
                             onClose={() => setModalVisible(false)}
@@ -96,7 +96,7 @@ export default function AddCarPhoto({ navigation }) {
                                     fontWeight="700"
                                     fontSize={scale(16)}
                                     backgroundColor="#72BBFA"
-                                    width={scale(260)}
+                                    width={scale(160)}
                                     height={scale(40)}
                                 />
                             </View>

@@ -36,7 +36,7 @@ const servicesByVehicle = {
 
 const vehicleTypes = ['SALOON', 'SUV', 'VAN', 'BIKE'];
 
-export default function CarWash({navigation}) {
+export default function CarWash({ navigation }) {
     const [selectedVehicle, setSelectedVehicle] = useState('SALOON');
     const [selectedServiceIds, setSelectedServiceIds] = useState([]);
 
@@ -84,13 +84,15 @@ export default function CarWash({navigation}) {
                         // alignItems: 'center',
                         paddingVertical: scale(30),
                     }}
-                ><View style={{ flexDirection: 'row', marginTop: scale(20), alignSelf: 'center', alignItems: 'center', justifyContent: 'space-around', backgroundColor: 'white', width: scale(320), height: scale(45), }}>
+                >
+                    <TouchableOpacity onPress={() => navigation.navigate('Subcriptions')}><View style={{ flexDirection: 'row', marginTop: scale(20), alignSelf: 'center', alignItems: 'center', justifyContent: 'space-around', backgroundColor: 'white', width: scale(320), height: scale(45), }}>
                         <View></View>
                         <Text style={{ textTransform: 'uppercase' }} color={'#3A3A3A'} fontWeight={700} fontSize={scale(16)}>
                             subscribe & save up to 50%
                         </Text>
                         <FontAwesome style={{ padding: scale(6) }} name="arrow-right" color="#3A3A3A" size={scale(20)} />
                     </View>
+                    </TouchableOpacity>
                     <View style={{ padding: scale(4), flexDirection: 'row', marginTop: scale(10), alignSelf: 'center', alignItems: 'center', justifyContent: 'space-around', }}>
                         <Feather style={{ padding: scale(4) }} name="plus" color="#13418C" size={scale(22)} />
                         <Text style={{ textTransform: 'uppercase' }} color={'#13418C'} fontWeight={700} fontSize={scale(20)}>
@@ -151,7 +153,7 @@ export default function CarWash({navigation}) {
                 {selectedServiceIds.length > 0 &&
                     <View
                         style={{
-                            paddingHorizontal: scale(10), flexDirection: "row", alignItems: "center", alignSelf: 'center', justifyContent: "space-between", marginTop: scale(-20), width: ("100%"), paddingHorizontal: scale(20), paddingVertical: scale(20), borderTopStartRadius: scale(10), borderTopEndRadius: scale(10), backgroundColor: 'white',
+                            paddingHorizontal: scale(10), flexDirection: "row", alignItems: "center", alignSelf: 'center', justifyContent: "space-between", marginTop: scale(-30), width: ("100%"), paddingHorizontal: scale(20), paddingVertical: scale(30), borderTopStartRadius: scale(20), borderTopEndRadius: scale(20), backgroundColor: 'white',
                         }}>
                         <View
                             style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>

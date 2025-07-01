@@ -30,28 +30,32 @@ const Services = ({ navigation }) => {
                         <Feather name="chevron-down" color="black" size={(scale(18))} />
                     </View>
                     <View style={{ gap: scale(15), marginTop: scale(-20) }}>
-                        <View
-                            style={{
-                                width: scale(175), height: scale(175), paddingVertical: scale(16), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(20), backgroundColor: 'white',
-                            }}>
-                            <Image source={CarWash} style={{ alignSelf: 'center' }} />
-                            <Text fontWeight='700' fontSize={scale(24)} color='#13418C'
+                        <TouchableOpacity onPress={() => navigation.navigate('CarWash')}>
+                            <View
                                 style={{
-                                    textAlign: 'center', marginTop: scale(3),
+                                    width: scale(175), height: scale(175), paddingVertical: scale(16), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(20), backgroundColor: 'white',
                                 }}>
-                                Car {'\n'}Washing
-                            </Text>
-                        </View>
-                        <View
-                            style={{ width: scale(175), height: scale(175), paddingVertical: scale(16), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(20), backgroundColor: 'white', }}>
-                            <Image source={CarSeatClean} style={{ alignSelf: 'center' }} />
-                            <Text fontWeight='700' fontSize={scale(24)} color='#13418C'
-                                style={{
-                                    textAlign: 'center', marginTop: scale(3),
-                                }}>
-                                Car{'\n'}Vacumming
-                            </Text>
-                        </View>
+                                <Image source={CarWash} style={{ alignSelf: 'center' }} />
+                                <Text fontWeight='700' fontSize={scale(24)} color='#13418C'
+                                    style={{
+                                        textAlign: 'center', marginTop: scale(3),
+                                    }}>
+                                    Car {'\n'}Washing
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <View
+                                style={{ width: scale(175), height: scale(175), paddingVertical: scale(16), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(20), backgroundColor: 'white', }}>
+                                <Image source={CarSeatClean} style={{ alignSelf: 'center' }} />
+                                <Text fontWeight='700' fontSize={scale(24)} color='#13418C'
+                                    style={{
+                                        textAlign: 'center', marginTop: scale(3),
+                                    }}>
+                                    Car{'\n'}Vacumming
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
                     <View
                         style={{ marginTop: scale(-20), width: scale(280), paddingHorizontal: scale(30), paddingVertical: scale(10), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), backgroundColor: 'white', }}>
@@ -80,8 +84,8 @@ const Services = ({ navigation }) => {
                             flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', alignSelf: 'center', paddingHorizontal: scale(20), paddingVertical: scale(5), borderColor: '#13418C', backgroundColor: 'white',
                         }}>
                         <MaterialIcons style={{ padding: scale(4) }} name="notifications-none" color="gray" size={(scale(28))} />
-                        <View style={{  marginTop: scale(-15) }}>
-                            <TouchableOpacity onPress={() => navigation.navigate('AddCarPhoto')} style={{alignItems: 'center',}}>
+                        <View style={{ marginTop: scale(-30) }}>
+                            <TouchableOpacity onPress={() => navigation.navigate('AddCarPhoto')} style={{ alignItems: 'center', }}>
                                 <Image source={PlusGroup} />
                                 {/* <Feather style={{ backgroundColor: '#1B337C',padding:scale(6),borderRadius:scale(100)}} name="plus" color="white" size={28} /> */}
                                 <Text fontWeight='700' fontSize={scale(20)} color='#13418C' style={{

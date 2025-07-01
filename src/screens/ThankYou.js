@@ -8,15 +8,15 @@ import Text from '../components/Text';
 import HalfCar from '../../assets/images/halfcar.png'; // low-opacity bg image
 
 export default function ThankYou({ navigation }) {
-    //   useEffect(() => {
-    //     GoToHome();
-    //   }, []);
+      useEffect(() => {
+        GoToHome();
+      }, []);
 
-    //   function GoToHome() {
-    //     setTimeout(() => {
-    //       navigation.replace('Home');
-    //     }, 3000);
-    //   }
+      function GoToHome() {
+        setTimeout(() => {
+          navigation.replace('Home');
+        }, 1000);
+      }
 
     return (
         <Background height={scale(320)} width={scale(420)} BackgroundImage={HalfCar} >

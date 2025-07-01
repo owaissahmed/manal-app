@@ -244,7 +244,7 @@ export default function ScheduleOrder({ navigation }) {
                             </View>
                         </View>
                     </View>
-                    {!modalVisible &&
+                    {!modalVisible && !profileVisible && !chooseCar &&(
                         <View
                             style={{
                                 marginTop: scale(10), paddingBottom: scale(100), paddingHorizontal: scale(30), alignItems: "center", alignSelf: 'center', justifyContent: "space-between", width: ("100%"), paddingVertical: scale(20), borderTopStartRadius: scale(20), borderTopEndRadius: scale(20), backgroundColor: 'white',
@@ -277,7 +277,7 @@ export default function ScheduleOrder({ navigation }) {
                                 </View>
                             </View>
                         </View>
-                    }
+                  )  }
 
                     <CustomModal
                         // height={scale(400)}
@@ -286,7 +286,7 @@ export default function ScheduleOrder({ navigation }) {
                         visible={chooseCar}
                         closeIcon
                         backgroundColor={'#FFFFFF'}
-                        borderWidth={scale(5)}
+                        borderWidth={scale(1)}
                         borderRadius={scale(12)}
                         borderColor={'black'}
                         onClose={() => setChooseCar(false)}
@@ -313,8 +313,9 @@ export default function ScheduleOrder({ navigation }) {
                         <View style={{ marginVertical: scale(20) }}>
                             <Button
                                 onPress={() => {
-                                    setModalVisible(false);
-                                    navigation.navigate('AddCar'); // or another screen
+                                    setChooseCar(false)
+                                    setModalVisible(true);
+                                     // or another screen
                                 }}
                                 title="DONE"
                                 color="#fff"
@@ -338,10 +339,10 @@ export default function ScheduleOrder({ navigation }) {
 
                     <CustomModal
                         width={scale(300)}
-                        backgroundColor={'#F8E5FF'}
-                        borderWidth={scale(3)}
-                        borderRadius={scale(12)}
-                        borderColor={'#3A3A3A69'}
+                        backgroundColor={'#fff'}
+                        // borderWidth={scale(3)}
+                        // borderRadius={scale(12)}
+                        // borderColor={'#3A3A3A69'}
                         visible={modalVisible}
                     >
 
@@ -434,7 +435,8 @@ export default function ScheduleOrder({ navigation }) {
                                 <Button
                                     onPress={() => {
                                         setModalVisible(false);
-                                        navigation.navigate('AddCarPhoto'); // or another screen
+                                        setProfileVisible(true);
+                                        // navigation.navigate('AddCarPhoto'); // or another screen
                                     }}
                                     title="Next"
                                     color="#fff"
@@ -453,10 +455,10 @@ export default function ScheduleOrder({ navigation }) {
                         closeIcon
                         onClose={() => setProfileVisible(false)}
                         width={scale(300)}
-                        backgroundColor={'#F8E5FF'}
-                        borderWidth={scale(3)}
+                        backgroundColor={'#fff'}
+                        // borderWidth={scale(3)}
                         borderRadius={scale(12)}
-                        borderColor={'#3A3A3A69'}
+                        // borderColor={'#3A3A3A69'}
                         visible={profileVisible}
                     >
 

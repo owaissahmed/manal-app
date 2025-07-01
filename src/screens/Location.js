@@ -15,8 +15,7 @@ import HalfCar from '../../assets/images/halfcar.png'; // low-opacity bg image
 import CustomModal from '../components/CustomModal';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
-import Acura from "../../assets/images/acura.png"
-
+import MapView ,{PROVIDER_GOOGLE }from 'react-native-maps';
 
 export default function Location({ navigation }) {
 
@@ -29,56 +28,37 @@ export default function Location({ navigation }) {
           marginTop: scale(50),
           // marginBottom: scale(10)
         }}>
-        </View>
-        <View
-          style={{ justifyContent: 'center', backgroundColor: 'white', width: scale(280), paddingHorizontal: scale(10), paddingVertical: scale(10), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), }}>
-          <View
-            style={{ flexDirection: 'row', gap: scale(6) }}>
-            <View style={{ justifyContent: 'center' }}>
-              <FontAwesome name="circle-thin" style={{ padding: scale(4) }} color="gray" size={(scale(16))} />
-            </View>
-            <View style={{ paddingHorizontal: scale(6), gap: scale(2), width: scale(200), }}>
-              <Text fontWeight='700' fontSize={scale(16)}
-                style={{
-                  color: '#13418C',
-                }}>
-                Flexi Order<Text style={{ color: "#FF1919" }}> (4% off)</Text></Text>
-              <Text fontSize={scale(15)} color='#3A3A3A'>
-                Delivery Anytime during working hours</Text>
-            </View>
-          </View>
-        </View>
-
-        <View
-          style={{
-            marginTop: scale(10), paddingBottom: scale(100), paddingHorizontal: scale(30), alignItems: "center", alignSelf: 'center', justifyContent: "space-between", width: ("100%"), paddingVertical: scale(20), borderTopStartRadius: scale(20), borderTopEndRadius: scale(20), backgroundColor: 'white',
-          }}>
-          <View>
-            <Octicons name="horizontal-rule" style={{ marginTop: scale(-20) }} color="silver" height={scale(40)} size={(scale(60))} />
-          </View>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: scale(280), marginTop: scale(20) }}>
-            <View
-              style={{}}>
-              <View>
-                <Text fontWeight='700' fontSize={scale(16)} color='#3A3A3A'
-                  style={{
-                    marginVertical: scale(3),
-                  }}>
-                  Total
-                </Text>
-                <Text fontWeight='400' fontSize={scale(15)} color='#3A3A3A'>
-                  50.00 AED
-                </Text>
-                <Text fontWeight='400' fontSize={scale(12)} color='#FF1919' style={{ marginTop: scale(-5) }}>
-                  incl. 5%VAT
-                </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("CarModel")}>
+            <View style={{
+              alignSelf: 'center', alignItems: 'center',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginVertical: scale(6),
+              borderRadius: scale(5),
+              paddingVertical: 10,
+              paddingHorizontal: scale(20),
+              marginBottom: 10, width: scale(280),
+            }}>
+              <View style={{ gap: scale(4), alignItems: 'center', flexDirection: 'row' }} >
+                <Text fontSize={scale(16)}>Building Name/Street</Text>
               </View>
+              <Feather name="chevron-right" color="black" size={(scale(18))} />
             </View>
-            {/* () => setModalVisible(true) */}
-            <View style={{ marginTop: scale(6), alignSelf: "center", }}>
-              <Button onPress={() => navigation.navigate('Payment')} style={{ borderRadius: scale(5) }}
-                title="Next" color={"#ffffff"} fontWeight="700" fontSize={scale(16)} backgroundColor={"#72BBFA"} width={scale(100)} height={scale(40)} />
-            </View>
+          </TouchableOpacity>
+          <View style={{ alignItems: 'center',marginVertical:scale(10) }}>
+            <MapView provider={PROVIDER_GOOGLE} style={{ width: scale(300), height: scale(500), }}
+              region={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.015,
+                longitudeDelta: 0.0121,
+              }}
+            >
+            </MapView>
+          </View>
+          <View style={{ marginTop: scale(10), alignSelf: "center", }}>
+            <Button onPress={() => navigation.navigate('Payment')} style={{ borderRadius: scale(5) }}
+              title="Confirm Location" color={"#ffffff"} fontWeight="700" fontSize={scale(16)} backgroundColor={"#72BBFA"} width={scale(270)} height={scale(40)} />
           </View>
         </View>
       </Background >

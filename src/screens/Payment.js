@@ -73,6 +73,7 @@ export default function Payment({ navigation }) {
                             placeholder="Other Note"
                             placeholderTextColor={'grey'}
                             multiline
+                            allowFontScaling={false}
                             numberOfLines={5}
                             textAlignVertical="top" // aligns text to the top for Android
                             style={{
@@ -86,7 +87,7 @@ export default function Payment({ navigation }) {
                                 minHeight: scale(130),
                                 color: "black",
                                 backgroundColor: '#fff',
-                                fontSize: 16,
+                                fontSize: scale(16),
                             }}
                         />
                     </View>

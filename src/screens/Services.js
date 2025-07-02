@@ -58,14 +58,11 @@ const Services = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
                     <View
-                        style={{ marginTop: scale(-20), width: scale(280), paddingHorizontal: scale(30), paddingVertical: scale(10), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), backgroundColor: 'white', }}>
+                        style={{ marginTop: scale(-20), width: scale(280), paddingHorizontal: scale(30), paddingVertical: scale(20), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), backgroundColor: 'white', }}>
                         <View
                             style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
                             <View>
-                                <Text fontWeight='700' fontSize={scale(16)} color='#13418C'
-                                    style={{
-                                        marginTop: scale(3),
-                                    }}>
+                                <Text fontWeight='700' fontSize={scale(16)} color='#13418C'>
                                     BOOK A CAR WASH
                                 </Text>
                                 <Text fontWeight='400' fontSize={scale(15)} color='#3A3A3A'>

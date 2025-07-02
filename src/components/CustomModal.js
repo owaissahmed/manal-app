@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+backgroundColor: 'rgba(0, 0, 0, 0.5)'
   },
   modalContainer: {
     borderRadius: scale(10),
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     // marginVertical: scale
   },
   closeIcon: {
-    marginVertical: scale(8),
+    // marginVertical: scale(8),
     alignSelf: 'flex-end',
     borderRadius: scale(20),
     // paddingHorizontal: scale(8),

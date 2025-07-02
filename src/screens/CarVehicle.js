@@ -76,9 +76,9 @@ export default function CarVehicle({ navigation }) {
                 {/* Main content wrapper */}
                 <View style={{
                     alignItems: 'center',
-                    padding:scale(16 )
+                    padding: scale(16)
                 }}>
-                    <FlatList height={scale(500)} scrollEnabled renderItem={Renderdata} data={Vehicles} keyExtractor={(item) => item.id} />
+                    <FlatList height={scale(500)} showsVerticalScrollIndicator={false} scrollEnabled renderItem={Renderdata} data={Vehicles} keyExtractor={(item) => item.id} />
                 </View>
 
             </Background>

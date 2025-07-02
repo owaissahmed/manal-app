@@ -39,7 +39,7 @@ export default function AddCarPhoto({ navigation }) {
                                 backgroundColor: 'white',
                                 margin: scale(4)
                             }}
-                            placeholder='PLATE CODE'
+                            placeholder='Plate Code'
                         />
                         <TextField
                             fontSize={scale(16)}
@@ -51,7 +51,7 @@ export default function AddCarPhoto({ navigation }) {
                                 backgroundColor: 'white',
                                 margin: scale(4)
                             }}
-                            placeholder='PLATE NUMBER'
+                            placeholder='Plate Number'
                         />
                         <TextField
                             fontSize={scale(16)}
@@ -63,7 +63,7 @@ export default function AddCarPhoto({ navigation }) {
                                 backgroundColor: 'white',
                                 margin: scale(4)
                             }}
-                            placeholder='CITY'
+                            placeholder='City'
                         />
                         <View style={{ marginTop: scale(20), marginBottom: scale(10) }}>
                             {/* <Button onPress={() => navigation.navigate('AddCar')} */}

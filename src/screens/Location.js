@@ -15,7 +15,7 @@ import HalfCar from '../../assets/images/halfcar.png'; // low-opacity bg image
 import CustomModal from '../components/CustomModal';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
-import MapView ,{PROVIDER_GOOGLE }from 'react-native-maps';
+import MapView ,{Marker }from 'react-native-maps';
 
 export default function Location({ navigation }) {
 
@@ -35,8 +35,8 @@ export default function Location({ navigation }) {
               justifyContent: 'space-between',
               marginVertical: scale(6),
               borderRadius: scale(5),
-              paddingVertical: 10,
-              paddingHorizontal: scale(20),
+              paddingVertical: 10,backgroundColor:'white',
+              paddingHorizontal: scale(20), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(12),
               marginBottom: 10, width: scale(280),
             }}>
               <View style={{ gap: scale(4), alignItems: 'center', flexDirection: 'row' }} >
@@ -46,15 +46,19 @@ export default function Location({ navigation }) {
             </View>
           </TouchableOpacity>
           <View style={{ alignItems: 'center',marginVertical:scale(10) }}>
-            <MapView provider={PROVIDER_GOOGLE} style={{ width: scale(300), height: scale(500), }}
-              region={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.015,
-                longitudeDelta: 0.0121,
-              }}
-            >
-            </MapView>
+             <MapView
+            style={{ width: scale(300), height: scale(500), }}
+            initialRegion={{
+            latitude: 24.8607,         // Karachi, Pakistan
+            longitude: 67.0011,
+            latitudeDelta: 0.05,
+            longitudeDelta: 0.05,
+            }}>
+         <Marker
+            coordinate={{ latitude: 24.8607, longitude: 67.0011 }}
+            title="Karachi"
+            description="This is Karachi"/>
+        </MapView>
           </View>
           <View style={{ marginTop: scale(10), alignSelf: "center", }}>
             <Button onPress={() => navigation.navigate('Payment')} style={{ borderRadius: scale(5) }}

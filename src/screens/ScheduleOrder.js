@@ -171,7 +171,7 @@ export default function ScheduleOrder({ navigation }) {
                                             backgroundColor: isSelected ? '#A188C0' : '#fff',
                                             // paddingVertical: 10,
                                             // paddingHorizontal: 14,
-                                            borderRadius: 20,
+                                            borderRadius: 12,
                                             // marginRight: 10,
                                             borderColor: isSelected ? "#A188C0" : '#13418C',
                                             borderWidth: 1,
@@ -206,7 +206,7 @@ export default function ScheduleOrder({ navigation }) {
                                                     backgroundColor: isSelected ? '#A188C0' : '#fff',
                                                     // paddingVertical: 10,
                                                     // paddingHorizontal: 14,
-                                                    borderRadius: 20,
+                                                    borderRadius: 12,
                                                     // marginRight: 10,
                                                     borderColor: isSelected ? "#A188C0" : '#13418C',
                                                     borderWidth: 1,
@@ -230,7 +230,7 @@ export default function ScheduleOrder({ navigation }) {
                         style={{ justifyContent: 'center', backgroundColor: 'white', width: scale(280), paddingHorizontal: scale(10), paddingVertical: scale(10), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), }}>
                         <View
                             style={{ flexDirection: 'row', gap: scale(6) }}>
-                            <View style={{ justifyContent: 'center' }}>
+                            <View>
                                 <FontAwesome name="circle-thin" style={{ padding: scale(4) }} color="gray" size={(scale(16))} />
                             </View>
                             <View style={{ paddingHorizontal: scale(6), gap: scale(2), width: scale(200), }}>
@@ -272,7 +272,7 @@ export default function ScheduleOrder({ navigation }) {
                                 </View>
                                 {/* () => setModalVisible(true) */}
                                 <View style={{ marginTop: scale(6), alignSelf: "center", }}>
-                                    <Button onPress={() => navigation.navigate('Payment')} style={{ borderRadius: scale(5) }}
+                                    <Button onPress={() => navigation.navigate('Location')} style={{ borderRadius: scale(5) }}
                                         title="Next" color={"#ffffff"} fontWeight="700" fontSize={scale(16)} backgroundColor={"#72BBFA"} width={scale(100)} height={scale(40)} />
                                 </View>
                             </View>

@@ -8,18 +8,18 @@ import FullCar from '../../assets/images/fullcar.png'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-
 import Button from '../components/button';
+import Footer from '../components/Footer';
 const servicesByVehicle = {
     SALOON: [
         { id: 'saloon_1', title: 'Car Washing', price: '30.00 AED', icon: Logo },
         { id: 'saloon_2', title: 'Interior Cleaning', price: '10.00 AED', icon: Logo },
-        { id: 'saloon_3', title: 'Extra Interior Cleaning', price: '30.00 AED', icon: Logo },
+        { id: 'saloon_3', title: 'Extra Interior Cleaning ', price: '30.00 AED', icon: Logo },
         { id: 'saloon_4', title: 'Super Shine', price: '25.00 AED', icon: Logo, },
         { id: 'saloon_5', title: 'Car Washing', price: '30.00 AED', icon: Logo },
         { id: 'saloon_6', title: 'Interior Cleaning', price: '10.00 AED', icon: Logo },
         { id: 'saloon_7', title: 'Interior Cleaning', price: '10.00 AED', icon: Logo },
+        { id: 'saloon_8', title: 'Interior Cleaning', price: '10.00 AED', icon: Logo },
 
     ],
     SUV: [
@@ -54,25 +54,32 @@ export default function CarWash({ navigation }) {
         return (
             <TouchableOpacity
                 onPress={() => toggleService(item.id)}
-                style={[
-                    {
-                        flex: 1,
-                        margin: scale(4),
-                        backgroundColor: '#fff',
-                        padding: scale(8),
-                        borderRadius: 12,
-                        alignItems: 'center',
-                        justifyContent: "center",
-                        elevation: 3,
-                    },
-                ]}
+                style={{
+                    width: '48%', // adjust for 2-column layout with margin
+                    height: scale(130), // fixed height
+                    margin: scale(4),
+                    backgroundColor: '#fff',
+                    padding: scale(8),
+                    borderRadius: 12,
+                    alignItems: 'center',
+                    justifyContent: 'space-between', // even spacing
+                    elevation: 3,
+                }}
             >
-                <Image source={item.icon} style={{ width: scale(50), height: scale(50) }} />
-                <Text color={'#13418C'} fontWeight={700} fontSize={scale(14)} style={{ paddingVertical: scale(6) }}>{item.price}</Text>
-                <View style={{ flexDirection: "row", alignItems: 'center', alignSelf: 'center', }}>
-                    <View style={{ width: scale('100') }}><Text color={'#13418C'} fontWeight={700} fontSize={scale(14)} style={{ textAlign: 'center' }}>{item.title}</Text></View>
-                    {isSelected && <Ionicons style={{ padding: scale(2) }} name="checkmark-circle-outline" color="#3A3A3A" size={scale(26)} />}</View>
+                <View style={{ alignItems: 'center' }}>
+                    <Image source={item.icon} style={{ width: scale(50), height: scale(50), resizeMode: 'contain' }} />
+                    <Text style={{ color: '#13418C', fontWeight: '700', fontSize: scale(14), paddingTop: scale(6), }}>
+                        {item.price}
+                    </Text>
+                </View>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingHorizontal: scale(4), }}>
+                    <Text style={{ color: '#13418C', fontWeight: '700', fontSize: scale(14), textAlign: 'center', flex: 1, }} numberOfLines={2} ellipsizeMode="tail">
+                        {item.title}
+                    </Text>
+                    {isSelected && <Ionicons name="checkmark-circle-outline" color="#3A3A3A" size={scale(24)} />}
+                </View>
             </TouchableOpacity>
+
         );
     };
 
@@ -151,6 +158,7 @@ export default function CarWash({ navigation }) {
                     />
                 </View>
                 {selectedServiceIds.length > 0 &&
+                // <Footer marginTop={scale(0)} paddingVertical={scale(10)} TotalPrice={'50.00 Aed'} Tax={'Incl 5% VAT'} ButtonText={'Next'}/>
                     <View
                         style={{
                             paddingHorizontal: scale(10), flexDirection: "row", alignItems: "center", alignSelf: 'center', justifyContent: "space-between", marginTop: scale(-30), width: ("100%"), paddingHorizontal: scale(20), paddingVertical: scale(30), borderTopStartRadius: scale(20), borderTopEndRadius: scale(20), backgroundColor: 'white',

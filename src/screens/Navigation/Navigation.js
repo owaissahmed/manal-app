@@ -22,12 +22,12 @@ const Navigation = () => {
         <Stack.Navigator>
             {/* <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} /> */}
             <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+            <Stack.Screen name="ScheduleOrder" component={ScheduleOrder} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: 'SCHEDULE YOUR ORDER' }} />
             <Stack.Screen name="CarVehicle" component={CarVehicle} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: 'SELECT VEHICLE MAKE' }} />
-            <Stack.Screen name="Location" component={Location} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: ' ' }} />
+            <Stack.Screen name="Location" component={Location} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: 'Location' }} />
             <Stack.Screen name="Subcriptions" component={Subcriptions} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: 'CAR WASH' }} />
             <Stack.Screen name="FrequencyDetail" component={FrequencyDetail} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: 'CAR WASH FREQUENCY:' }} />
             <Stack.Screen name="ThankYou" component={ThankYou} options={{ headerShown: false }} />
-            <Stack.Screen name="ScheduleOrder" component={ScheduleOrder} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: 'SCHEDULE YOUR ORDER' }} />
             <Stack.Screen name="Signup" component={Signup} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: 'CREATE AN ACCOUNT' }} />
             <Stack.Screen name="CarWash" component={CarWash} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: 'CAR WASH' }} />
             <Stack.Screen name="CarModel" component={CarModel} options={{ headerShown: true, headerTransparent: true, headerTitleStyle: { color: "#770996" }, headerTitle: 'MODEL YEAR & COLOR' }} />

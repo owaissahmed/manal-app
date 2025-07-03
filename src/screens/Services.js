@@ -8,11 +8,11 @@ import Feather from 'react-native-vector-icons/Feather';
 import CarWash from '../../assets/images/carWash.png';
 import CarSeatClean from '../../assets/images/carSeatClean.png';
 import PlusGroup from '../../assets/images/plusGroup.png';
-import { scale } from 'react-native-size-matters';
+import { s, scale } from 'react-native-size-matters';
 import Button from '../components/button';
 import Text from '../components/Text';
 import HalfCar from '../../assets/images/halfcar.png'; // low-opacity bg image
-
+import Footer from '../components/Footer';
 const Services = ({ navigation }) => {
     const address = 'Gulshan e Iqbal Karachi';
     const startingAddress = address.substring(0, 12) + '......';
@@ -20,45 +20,46 @@ const Services = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <Background height={scale(320)} width={scale(420)} BackgroundImage={HalfCar} imageOpacity={0.1}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-between', marginTop: scale(30) }}>
+                <View style={{ flex: 1, alignItems: 'center',justifyContent:"space-between", marginTop: scale(30) }}>
                     <View
                         style={{
-                            flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-end', marginRight: scale(15),
+                            flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-end',marginTop: scale(10), marginRight: scale(15),
                         }}>
                         <Ionicons name="location-outline" color="black" size={(scale(16))} />
                         <Text fontWeight='400' fontSize={scale(16)} color='#13418C'>{startingAddress}</Text>
                         <Feather name="chevron-down" color="black" size={(scale(18))} />
                     </View>
-                    <View style={{ gap: scale(15), marginTop: scale(-20) }}>
+                    <View style={{ gap: scale(20), marginTop: scale(-100) }}>
                         <TouchableOpacity onPress={() => navigation.navigate('CarWash')}>
                             <View
                                 style={{
-                                    width: scale(175), height: scale(175), paddingVertical: scale(16), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(20), backgroundColor: 'white',
+                                   flexDirection:'row',justifyContent:'space-around',paddingHorizontal:scale(10),alignItems:'center', width: scale(280), paddingVertical: scale(20), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(20), backgroundColor: 'white',
                                 }}>
                                 <Image source={CarWash} style={{ alignSelf: 'center' }} />
-                                <Text fontWeight='700' fontSize={scale(24)} color='#13418C'
+                                <Text fontWeight='700' fontSize={scale(22)} color='#13418C'
                                     style={{
-                                        textAlign: 'center', marginTop: scale(3),
+                                         marginTop: scale(3),
                                     }}>
-                                    Car {'\n'}Washing
+                                    Car Washing
                                 </Text>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity>
                             <View
-                                style={{ width: scale(175), height: scale(175), paddingVertical: scale(16), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(20), backgroundColor: 'white', }}>
-                                <Image source={CarSeatClean} style={{ alignSelf: 'center' }} />
-                                <Text fontWeight='700' fontSize={scale(24)} color='#13418C'
+                                style={{
+                                   flexDirection:'row',justifyContent:'space-around',paddingHorizontal:scale(10),alignItems:'center', width: scale(280), paddingVertical: scale(20), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(20), backgroundColor: 'white',
+                                }}><Image source={CarSeatClean} style={{ alignSelf: 'center' }} />
+                                <Text fontWeight='700' fontSize={scale(22)} color='#13418C'
                                     style={{
                                         textAlign: 'center', marginTop: scale(3),
                                     }}>
-                                    Car{'\n'}Vacumming
+                                    Car Vacumming
                                 </Text>
                             </View>
                         </TouchableOpacity>
                     </View>
                     <View
-                        style={{ marginTop: scale(-20), width: scale(280), paddingHorizontal: scale(30), paddingVertical: scale(20), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), backgroundColor: 'white', }}>
+                        style={{ marginTop:scale(-100), width: scale(280), paddingHorizontal: scale(30), paddingVertical: scale(20), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), backgroundColor: 'white', }}>
                         <View
                             style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
                             <View>
@@ -78,7 +79,7 @@ const Services = ({ navigation }) => {
                     </View>
                     <View
                         style={{
-                            flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', alignSelf: 'center', paddingHorizontal: scale(20), paddingVertical: scale(5), borderColor: '#13418C', backgroundColor: 'white',
+                            flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', paddingHorizontal: scale(20), paddingVertical: scale(5), borderColor: '#13418C', backgroundColor: 'white',
                         }}>
                         <MaterialIcons style={{ padding: scale(4) }} name="notifications-none" color="gray" size={(scale(28))} />
                         <View style={{ marginTop: scale(-30) }}>
@@ -92,10 +93,8 @@ const Services = ({ navigation }) => {
                         </View>
                         <FontAwesome6 style={{ padding: scale(6) }} name="bars" color="gray" size={(scale(22))} />
                     </View>
-
-
-
                 </View>
+                {/* <Footer /> */}
             </Background>
         </SafeAreaView>
     );

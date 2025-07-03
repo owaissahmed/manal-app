@@ -86,12 +86,7 @@ export default function CarWash({ navigation }) {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <Background height={scale(480)} width={scale(460)} BackgroundImage={FullCar} imageOpacity={0.1}>
-                <View
-                    style={{
-                        // alignItems: 'center',
-                        paddingVertical: scale(30),
-                    }}
-                >
+                <View style={{ marginTop: scale(30), flex: 1, justifyContent: 'space-between', alignItems: 'center' }}>
                     <TouchableOpacity onPress={() => navigation.navigate('Subcriptions')}><View style={{ flexDirection: 'row', marginTop: scale(20), alignSelf: 'center', alignItems: 'center', justifyContent: 'space-around', backgroundColor: 'white', width: scale(320), height: scale(45), }}>
                         <View></View>
                         <Text style={{ textTransform: 'uppercase' }} color={'#3A3A3A'} fontWeight={700} fontSize={scale(16)}>
@@ -152,40 +147,15 @@ export default function CarWash({ navigation }) {
                         numColumns={2}
                         // backgroundColor={'lightblue'}
                         scrollEnabled
-                        height={selectedServiceIds.length > 0 ? scale(400) : scale(500)}
+                        height={selectedServiceIds.length > 0 ? scale(380) : scale(500)}
+                        // height={scale(400)}
                         renderItem={renderService}
                         contentContainerStyle={{ paddingHorizontal: scale(10) }}
                     />
+                    {selectedServiceIds.length > 0 &&
+                        <Footer TotalPrice={'50.00 AED'} Tax={'Incl. 5% VAT'} ButtonText={'Next'} onPress={() => navigation.navigate('AddCar')} />
+                    }
                 </View>
-                {selectedServiceIds.length > 0 &&
-                // <Footer marginTop={scale(0)} paddingVertical={scale(10)} TotalPrice={'50.00 Aed'} Tax={'Incl 5% VAT'} ButtonText={'Next'}/>
-                    <View
-                        style={{
-                            paddingHorizontal: scale(10), flexDirection: "row", alignItems: "center", alignSelf: 'center', justifyContent: "space-between", marginTop: scale(-30), width: ("100%"), paddingHorizontal: scale(20), paddingVertical: scale(30), borderTopStartRadius: scale(20), borderTopEndRadius: scale(20), backgroundColor: 'white',
-                        }}>
-                        <View
-                            style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
-                            <View>
-                                <Text fontWeight='700' fontSize={scale(16)} color='#3A3A3A'
-                                    style={{
-                                        marginVertical: scale(3),
-                                    }}>
-                                    Total
-                                </Text>
-                                <Text fontWeight='400' fontSize={scale(15)} color='#3A3A3A'>
-                                    50.00 AED
-                                </Text>
-                                <Text fontWeight='400' fontSize={scale(12)} color='#FF1919' style={{ marginTop: scale(-5) }}>
-                                    incl. 5%VAT
-                                </Text>
-                            </View>
-                        </View>
-                        <View style={{ marginTop: scale(6), alignSelf: "center", }}>
-                            <Button onPress={() => navigation.navigate('AddCar')} style={{ borderRadius: scale(5) }}
-                                title="Next" color={"#ffffff"} fontWeight="700" fontSize={scale(16)} backgroundColor={"#72BBFA"} width={scale(100)} height={scale(40)} />
-                        </View>
-                    </View>
-                }
             </Background>
         </SafeAreaView>
     );

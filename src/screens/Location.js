@@ -15,7 +15,7 @@ import HalfCar from '../../assets/images/halfcar.png'; // low-opacity bg image
 import CustomModal from '../components/CustomModal';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
-import MapView ,{Marker }from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 export default function Location({ navigation }) {
 
@@ -23,11 +23,8 @@ export default function Location({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Background height={scale(320)} width={scale(420)} BackgroundImage={HalfCar} imageOpacity={0.1}>
-        <View style={{
-          alignItems: 'center',
-          marginTop: scale(50),
-          // marginBottom: scale(10)
-        }}>
+        <View style={{ marginTop: scale(30), flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+
           <TouchableOpacity onPress={() => navigation.navigate("CarModel")}>
             <View style={{
               alignSelf: 'center', alignItems: 'center',
@@ -35,7 +32,7 @@ export default function Location({ navigation }) {
               justifyContent: 'space-between',
               marginVertical: scale(6),
               borderRadius: scale(5),
-              paddingVertical: 10,backgroundColor:'white',
+              paddingVertical: 10, backgroundColor: 'white',
               paddingHorizontal: scale(20), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(12),
               marginBottom: 10, width: scale(280),
             }}>
@@ -45,20 +42,20 @@ export default function Location({ navigation }) {
               <Feather name="chevron-right" color="black" size={(scale(18))} />
             </View>
           </TouchableOpacity>
-          <View style={{ alignItems: 'center',marginVertical:scale(10) }}>
-             <MapView
-            style={{ width: scale(300), height: scale(500), }}
-            initialRegion={{
-            latitude: 24.8607,         // Karachi, Pakistan
-            longitude: 67.0011,
-            latitudeDelta: 0.05,
-            longitudeDelta: 0.05,
-            }}>
-         <Marker
-            coordinate={{ latitude: 24.8607, longitude: 67.0011 }}
-            title="Karachi"
-            description="This is Karachi"/>
-        </MapView>
+          <View style={{ alignItems: 'center', marginVertical: scale(10) }}>
+            <MapView
+              style={{ width: scale(300), height: scale(500), }}
+              initialRegion={{
+                latitude: 24.8607,         // Karachi, Pakistan
+                longitude: 67.0011,
+                latitudeDelta: 0.05,
+                longitudeDelta: 0.05,
+              }}>
+              <Marker
+                coordinate={{ latitude: 24.8607, longitude: 67.0011 }}
+                title="Karachi"
+                description="This is Karachi" />
+            </MapView>
           </View>
           <View style={{ marginTop: scale(10), alignSelf: "center", }}>
             <Button onPress={() => navigation.navigate('Payment')} style={{ borderRadius: scale(5) }}

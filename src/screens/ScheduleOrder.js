@@ -13,31 +13,43 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import TextField from '../components/textinput';
 import HalfCar from '../../assets/images/halfcar.png'; // low-opacity bg image
 import CustomModal from '../components/CustomModal';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import Acura from "../../assets/images/acura.png"
-
-
+import Footer from '../components/Footer';
+import CalendarModal from '../components/Calender';
+import CustomBottomSheet from '../components/BottomSheet';
+// import Dropdown from '../components/Dropdown';
 export default function ScheduleOrder({ navigation }) {
     useFocusEffect(useCallback(() => {
         setChooseCar(true);
     }, []))
-
-
+    const [showCalendar, setShowCalendar] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
     const [profileVisible, setProfileVisible] = useState(false);
     const [chooseCar, setChooseCar] = useState(true);
+    const [selectedTime, setSelectedTime] = useState(null);
+    const [selectedAddress, setSelectedAddress] = useState(null);
+    const [isSheetVisible, setIsSheetVisible] = useState(false);
 
     const name = 'Ali Khan';
     const startingName = name.substring(0, 2) + '...';
 
-    const days = [
-        { key: 'MON', label: 'Mon', date: '01' },
-        { key: 'TUE', label: 'Tue', date: '02' },
-        { key: 'WED', label: 'Wed', date: '03' },
-        { key: 'THU', label: 'Thu', date: '04' },
-        { key: 'FRI', label: 'Fri', date: '05' },
-    ];
+    const handleSave = (date) => {
+        setSelectedDate(date);      // ⬅️ Save the selected date
+        setShowCalendar(false);     // ⬅️ Close the calendar modal
+    };
+
+    const formatDate = (date) => {
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = date.toLocaleString('default', { month: 'short' });
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    };
+
+
 
     const address = [
         { label: 'HOME', id: '01' },
@@ -46,57 +58,25 @@ export default function ScheduleOrder({ navigation }) {
     ];
 
 
-    const timeSlotsByDay = {
-        MON: [
-            { id: 'mon_1', time: '12:00 PM' },
-            { id: 'mon_2', time: '02:00 PM' },
-            { id: 'mon_3', time: '04:00 PM' },
-        ],
-        TUE: [
-            { id: 'tue_1', time: '10:00 AM' },
-            { id: 'tue_2', time: '01:00 PM' },
-            { id: 'tue_3', time: '05:00 PM' },
-        ],
-        WED: [
-            { id: 'wed_1', time: '09:00 AM' },
-            { id: 'wed_2', time: '12:00 PM' },
-        ],
-        THU: [
-            { id: 'thu_1', time: '11:00 AM' },
-            { id: 'thu_2', time: '03:00 PM' },
-        ],
-        FRI: [
-            { id: 'fri_1', time: '10:00 AM' },
-            { id: 'fri_2', time: '01:00 PM' },
-        ],
-    };
 
-    const [selectedDay, setSelectedDay] = useState('MON');
-    const [selectedTime, setSelectedTime] = useState(null);
-    const [selectedAddress, setSelectedAddress] = useState(null);
 
-    const handleDaySelect = (dayKey) => {
-        setSelectedDay(dayKey);
-        setSelectedTime(null); // Reset time when day changes
-    };
-
-    const handleTimeSelect = (time) => {
-        setSelectedTime(time);
-    };
 
     const handleAddressSelect = (addressKey) => {
         setSelectedAddress(addressKey);
     };
 
+    const times = [
+        "12:00 AM", "1:00 AM", "2:00 AM", "3:00 AM", "4:00 AM", "5:00 AM",
+        "6:00 AM", "7:00 AM", "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM",
+        "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM",
+        "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM", "11:00 PM"
+    ]
+
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <Background height={scale(320)} width={scale(420)} BackgroundImage={HalfCar} imageOpacity={0.1}>
-                <View style={{
-                    alignItems: 'center',
-                    marginTop: scale(50),
-                    // marginBottom: scale(10)
-                }}>
+                <View style={{ marginTop: scale(30), flex: 1, justifyContent: 'space-between', alignItems: 'center' }}>
                     <View style={{ marginVertical: scale(10), flexDirection: "row", alignItems: 'center', justifyContent: "space-between", paddingVertical: scale(10), width: scale(280) }}>
                         <View style={{
                             alignItems: 'center',
@@ -133,7 +113,7 @@ export default function ScheduleOrder({ navigation }) {
                         </View>
                     </View>
                     <View
-                        style={{ marginBottom: scale(10), justifyContent: 'center', backgroundColor: 'white', width: scale(280), paddingHorizontal: scale(10), paddingVertical: scale(10), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), }}>
+                        style={{ marginTop: scale(-120), justifyContent: 'center', backgroundColor: 'white', width: scale(280), paddingHorizontal: scale(10), paddingVertical: scale(10), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), }}>
                         <View
                             style={{ flexDirection: 'row', gap: scale(6) }}>
                             <View>
@@ -150,84 +130,47 @@ export default function ScheduleOrder({ navigation }) {
                             </View>
                         </View>
                     </View>
-
-                    <ScrollView
-                        contentContainerStyle={{ marginVertical: scale(12) }}
-                        showsVerticalScrollIndicator={false}
-                    >
-                        {/* Day selector */}
-                        <FlatList
-                            horizontal
-                            data={days}
-                            keyExtractor={(item) => item.key}
-                            contentContainerStyle={{ gap: scale(6), width: scale(280), justifyContent: 'center' }}
-                            renderItem={({ item }) => {
-                                const isSelected = selectedDay === item.key;
-                                return (
-                                    <TouchableOpacity
-                                        onPress={() => handleDaySelect(item.key)}
-                                        style={{
-                                            justifyContent: 'center',
-                                            backgroundColor: isSelected ? '#A188C0' : '#fff',
-                                            // paddingVertical: 10,
-                                            // paddingHorizontal: 14,
-                                            borderRadius: 12,
-                                            // marginRight: 10,
-                                            borderColor: isSelected ? "#A188C0" : '#13418C',
-                                            borderWidth: 1,
-                                            alignItems: 'center',
-                                            height: scale(45),
-                                            width: scale(50),
-                                            // width:scale
-                                        }}
-                                    >
-                                        <Text color={isSelected ? '#fff' : '#3A3A3A'}>{item.label}</Text>
-                                        <Text style={{ fontWeight: '700' }} fontSize={scale(14)} color={isSelected ? '#fff' : '#3A3A3A'}>{item.date}</Text>
-                                    </TouchableOpacity>
-                                );
-                            }}
+                    <View style={{ marginTop: scale(-100), flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: scale(280), }}>
+                        <TouchableOpacity onPress={() => setShowCalendar(true)}>
+                            <View style={{ backgroundColor: 'white', borderRadius: scale(10), flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: scale(10), width: scale(130) }}>
+                                <Text color={"#13418C"} fontWeight="700" fontSize={scale(14)}
+                                >{selectedDate ? formatDate(selectedDate) : 'Select Date'}</Text>
+                                <Fontisto name="date" color="#13418C" size={(scale(16))} />
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => setIsSheetVisible(true)} >
+                            <View style={{ backgroundColor: 'white', borderRadius: scale(10), flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: scale(10), width: scale(130) }}>
+                                <Text color={"#13418C"} fontWeight="700" fontSize={scale(14)}
+                                >{selectedTime ? selectedTime : "Select Time"}</Text>
+                                <Fontisto name="clock" color="#13418C" size={(scale(16))} />
+                            </View>
+                        </TouchableOpacity>
+                        {/* ⬇️ Calendar modal with handlers */}
+                        <CalendarModal
+                            visible={showCalendar}
+                            onClose={() => setShowCalendar(false)}
+                            onSave={handleSave}
                         />
-
-                        {/* Time slots */}
-                        {selectedDay && (
-                            <>
-                                <FlatList
-                                    horizontal
-                                    data={timeSlotsByDay[selectedDay] || []}
-                                    keyExtractor={(item) => item.id}
-                                    contentContainerStyle={{ gap: scale(10), width: scale(280), justifyContent: 'center', marginTop: scale(15) }}
-                                    renderItem={({ item }) => {
-                                        const isSelected = selectedTime === item.time;
-                                        return (
-                                            <TouchableOpacity
-                                                onPress={() => handleTimeSelect(item.time)}
-                                                style={{
-                                                    justifyContent: 'center',
-                                                    backgroundColor: isSelected ? '#A188C0' : '#fff',
-                                                    // paddingVertical: 10,
-                                                    // paddingHorizontal: 14,
-                                                    borderRadius: 12,
-                                                    // marginRight: 10,
-                                                    borderColor: isSelected ? "#A188C0" : '#13418C',
-                                                    borderWidth: 1,
-                                                    alignItems: 'center',
-                                                    height: scale(30),
-                                                    width: scale(85),
-                                                    // width:scale
-                                                }}
-                                            >
-                                                <Text style={{ color: isSelected ? '#fff' : '#3A3A3A', fontWeight: '500' }}>
-                                                    {item.time}
-                                                </Text>
-                                            </TouchableOpacity>
-                                        );
+                        <CustomBottomSheet isVisible={isSheetVisible} onClose={() => setIsSheetVisible(false)}>
+                            {times.map((item, index) => (
+                                <TouchableOpacity
+                                    key={index}
+                                    onPress={() => {
+                                        setSelectedTime(item);
+                                        setIsSheetVisible(false);
                                     }}
-                                />
-                            </>
-                        )}
-                    </ScrollView>
+                                    style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 12 }}
+                                >
+                                    <Text style={{ fontSize: 16 }}>{item}</Text>
+                                    {selectedTime === item && (
+                                        <Feather name="check" size={20} color="#007bff" />
+                                    )}
+                                </TouchableOpacity>
+                            ))}
+                        </CustomBottomSheet>
+                    </View>
                     <View
-                        style={{ justifyContent: 'center', backgroundColor: 'white', width: scale(280), paddingHorizontal: scale(10), paddingVertical: scale(10), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), }}>
+                        style={{ marginTop: scale(-100), justifyContent: 'center', backgroundColor: 'white', width: scale(280), paddingHorizontal: scale(10), paddingVertical: scale(10), borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), }}>
                         <View
                             style={{ flexDirection: 'row', gap: scale(6) }}>
                             <View>
@@ -244,279 +187,215 @@ export default function ScheduleOrder({ navigation }) {
                             </View>
                         </View>
                     </View>
-                    {!modalVisible && !profileVisible && !chooseCar &&(
-                        <View
-                            style={{
-                                marginTop: scale(10), paddingBottom: scale(100), paddingHorizontal: scale(30), alignItems: "center", alignSelf: 'center', justifyContent: "space-between", width: ("100%"), paddingVertical: scale(20), borderTopStartRadius: scale(20), borderTopEndRadius: scale(20), backgroundColor: 'white',
-                            }}>
-                            <View>
-                                <Octicons name="horizontal-rule" style={{ marginTop: scale(-20) }} color="silver" height={scale(40)} size={(scale(60))} />
-                            </View>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: scale(280), marginTop: scale(20) }}>
-                                <View
-                                    style={{}}>
-                                    <View>
-                                        <Text fontWeight='700' fontSize={scale(16)} color='#3A3A3A'
-                                            style={{
-                                                marginVertical: scale(3),
-                                            }}>
-                                            Total
-                                        </Text>
-                                        <Text fontWeight='400' fontSize={scale(15)} color='#3A3A3A'>
-                                            50.00 AED
-                                        </Text>
-                                        <Text fontWeight='400' fontSize={scale(12)} color='#FF1919' style={{ marginTop: scale(-5) }}>
-                                            incl. 5%VAT
-                                        </Text>
-                                    </View>
-                                </View>
-                                {/* () => setModalVisible(true) */}
-                                <View style={{ marginTop: scale(6), alignSelf: "center", }}>
-                                    <Button onPress={() => navigation.navigate('Location')} style={{ borderRadius: scale(5) }}
-                                        title="Next" color={"#ffffff"} fontWeight="700" fontSize={scale(16)} backgroundColor={"#72BBFA"} width={scale(100)} height={scale(40)} />
-                                </View>
-                            </View>
-                        </View>
-                  )  }
-
-                    <CustomModal
-                        // height={scale(400)}
-                        width={scale(300)}
-                        // ScrollHeight={scale(800)}
-                        visible={chooseCar}
-                        closeIcon
-                        backgroundColor={'#FFFFFF'}
-                        borderWidth={scale(1)}
-                        borderRadius={scale(12)}
-                        borderColor={'black'}
-                        onClose={() => setChooseCar(false)}
-                    // imageSource={CarSport}
-                    // message="please add your car to complete your order"
-                    >
-                        <View style={{ marginTop: scale(10), marginBottom: scale(20) }}>
-                            <Text fontWeight='700' fontSize={scale(24)} color='#770996' style={{ textTransform: 'uppercase', padding: scale(4) }}>
-                                choose your car(s):
-                            </Text>
-                        </View>
-                        <View style={{ flexDirection: 'row', marginVertical: scale(10), alignItems: 'center', justifyContent: 'space-evenly', backgroundColor: "white", borderRadius: scale(20), height: scale(90), width: scale(280) }}>
-                            <View><Image style={{ padding: scale(4) }} source={Acura} /></View>
-                            <View><Text style={{ textTransform: 'uppercase' }} color={'#000'} fontWeight="700" fontSize={scale(16)}>
-                                ACURA MDX
-                            </Text>
-                                <Text style={{ textTransform: 'uppercase' }} color={'#000'} fontWeight="700" fontSize={scale(16)}>MDX | 2024</Text>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                    <View style={{ width: scale(18), borderRadius: scale(3), height: scale(18), backgroundColor: 'black' }}></View>
-                                    <Text style={{ marginLeft: scale(6), textTransform: 'uppercase', }} color={'#000'} fontWeight="700" fontSize={scale(16)}>black</Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={{ marginVertical: scale(20) }}>
-                            <Button
-                                onPress={() => {
-                                    setChooseCar(false)
-                                    setModalVisible(true);
-                                     // or another screen
-                                }}
-                                title="DONE"
-                                color="#fff"
-                                fontWeight="700"
-                                fontSize={scale(16)}
-                                backgroundColor="#72BBFA"
-                                width={scale(260)}
-                                height={scale(40)}
-                            />
-                        </View>
-
-                        <View style={{ flexDirection: 'row' }}>
-                            <AntDesign style={{ alignSelf: 'center' }} name="plus" color="#8828A3" size={scale(22)} />
-                            <View>
-                                <Text fontWeight='700' fontSize={scale(20)} color='#770996' style={{ textTransform: 'uppercase', padding: scale(4) }}>
-                                    Add a Car
-                                </Text>
-                            </View>
-                        </View>
-                    </CustomModal>
-
-                    <CustomModal
-                        width={scale(300)}
-                        backgroundColor={'#fff'}
-                        // borderWidth={scale(3)}
-                        // borderRadius={scale(12)}
-                        // borderColor={'#3A3A3A69'}
-                        visible={modalVisible}
-                    >
-
-                        <View style={{ marginTop: scale(10) }}>
-                            <View style={{ alignItems: 'center' }}>
-                                <Octicons name="horizontal-rule" style={{ marginTop: scale(-20) }} color="#770996" height={scale(40)} size={(scale(60))} />
-                            </View>
-                            <TouchableOpacity >
-                                <View style={{ marginVertical: scale(10), }}>
-                                    <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(60), alignItems: 'center', flexDirection: 'row' }} >
-                                        <View style={{ flexDirection: 'row', alignItems: 'center' }}><Ionicons name="location-outline" color="grey" size={(scale(16))} />
-                                            <Text fontSize={scale(16)} color={"grey"}>  Your Current location</Text></View>
-                                        <Feather name="chevron-right" color="grey" size={(scale(18))} />
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-                            <Text fontWeight='700' fontSize={scale(16)} color='#3A3A3A' style={{ padding: scale(4) }}>
-                                Additional Address Details
-                            </Text>
-                            <TouchableOpacity >
-                                <View style={{ marginVertical: scale(10), }}>
-                                    <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
-                                        <Text fontSize={scale(16)} color={"grey"}>Building Name/Street</Text>
-                                        <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <View style={{ marginVertical: scale(10), }}>
-                                    <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
-                                        <Text fontSize={scale(16)} color={"grey"}>Villa/Apartment Number</Text>
-                                        <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <View style={{ marginVertical: scale(10), }}>
-                                    <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
-                                        <Text fontSize={scale(16)} color={"grey"}>Notes</Text>
-                                        <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-                            <View>
-                                <Text fontWeight='700' fontSize={scale(15)} color='#3A3A3A' style={{ padding: scale(4) }}>
-                                    Additional Address Details (Optional)
-                                </Text>
-                            </View>
-                            <FlatList
-                                style={{ marginVertical: scale(5) }}
-                                horizontal
-                                data={address}
-                                keyExtractor={(item) => item.id}
-                                contentContainerStyle={{ width: scale(260), justifyContent: 'space-between', }}
-                                renderItem={({ item }) => {
-                                    const isSelected = selectedAddress === item.id;
-                                    return (
-                                        <TouchableOpacity
-                                            onPress={() => handleAddressSelect(item.id)}
-                                            style={{
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                backgroundColor: isSelected ? '#A188C0' : '#fff',
-                                                borderRadius: 20,
-                                                borderColor: isSelected ? "#A188C0" : '#13418C',
-                                                borderWidth: 1,
-                                                height: scale(35),
-                                                width: scale(75),
-                                            }}
-                                        >
-                                            <Text color={isSelected ? '#fff' : '#3A3A3A'}>{item.label}</Text>
-                                        </TouchableOpacity>
-                                    );
-                                }}
-                            />
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: scale(10) }}>
-                                <Button
-                                    onPress={() => {
-                                        setModalVisible(false);
-                                        setProfileVisible(true); // open second modal immediately
-                                    }}
-                                    title="Skip"
-                                    color="#fff"
-                                    fontWeight="700"
-                                    fontSize={scale(16)}
-                                    backgroundColor="#72BBFA"
-                                    width={scale(120)}
-                                    height={scale(40)}
-                                />
-                                <Button
-                                    onPress={() => {
-                                        setModalVisible(false);
-                                        setProfileVisible(true);
-                                        // navigation.navigate('AddCarPhoto'); // or another screen
-                                    }}
-                                    title="Next"
-                                    color="#fff"
-                                    fontWeight="700"
-                                    fontSize={scale(16)}
-                                    backgroundColor="#72BBFA"
-                                    width={scale(120)}
-                                    height={scale(40)}
-                                />
-                            </View>
-                        </View>
-
-                        {/* </View> */}
-                    </CustomModal>
-                    <CustomModal
-                        closeIcon
-                        onClose={() => setProfileVisible(false)}
-                        width={scale(300)}
-                        backgroundColor={'#fff'}
-                        // borderWidth={scale(3)}
-                        borderRadius={scale(12)}
-                        // borderColor={'#3A3A3A69'}
-                        visible={profileVisible}
-                    >
-
-                        <View style={{ marginTop: scale(10) }}>
-                            <View>
-                                <Text fontWeight='700' fontSize={scale(24)} color='#3A3A3A' style={{ paddingHorizontal: scale(4) }}>
-                                    0123456789
-                                </Text>
-                                <Text fontWeight='700' fontSize={scale(18)} color='#70BEFD' style={{ paddingHorizontal: scale(4) }}>
-                                    Complete Profile
-                                </Text>
-                            </View>
-                            <TouchableOpacity >
-                                <View style={{ marginVertical: scale(10), }}>
-                                    <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
-                                        <Text fontSize={scale(16)} color={"grey"}>My Rides</Text>
-                                        <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <View style={{ marginVertical: scale(10), }}>
-                                    <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
-                                        <Text fontSize={scale(16)} color={"grey"}>My Orders</Text>
-                                        <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <View style={{ marginVertical: scale(10), }}>
-                                    <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
-                                        <Text fontSize={scale(16)} color={"grey"}>Payment</Text>
-                                        <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <View style={{ marginVertical: scale(10), }}>
-                                    <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
-                                        <Text fontSize={scale(16)} color={"grey"}>Content</Text>
-                                        <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <View style={{ marginVertical: scale(10), }}>
-                                    <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
-                                        <Text fontSize={scale(16)} color={"grey"}>FAQs</Text>
-                                        <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-
-                        {/* </View> */}
-                    </CustomModal>
+                    <Footer TotalPrice={'50.00 AED'} Tax={'Incl. 5% VAT'} ButtonText={'Next'} onPress={() => navigation.navigate('Location')} />
                 </View>
+                <CustomModal
+                    // height={scale(400)}
+                    width={scale(300)}
+                    // ScrollHeight={scale(800)}
+                    visible={chooseCar}
+                    closeIcon
+                    backgroundColor={'#FFFFFF'}
+                    borderWidth={scale(1)}
+                    borderRadius={scale(12)}
+                    borderColor={'black'}
+                    onClose={() => setChooseCar(false)}
+                >
+                    <View style={{ marginTop: scale(10), marginBottom: scale(20) }}>
+                        <Text fontWeight='700' fontSize={scale(24)} color='#770996' style={{ textTransform: 'uppercase', padding: scale(4) }}>
+                            choose your car(s):
+                        </Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', marginVertical: scale(10), alignItems: 'center', justifyContent: 'space-evenly', backgroundColor: "white", borderRadius: scale(20), height: scale(90), width: scale(280) }}>
+                        <View><Image style={{ padding: scale(4) }} source={Acura} /></View>
+                        <View><Text style={{ textTransform: 'uppercase' }} color={'#000'} fontWeight="700" fontSize={scale(16)}>
+                            ACURA MDX
+                        </Text>
+                            <Text style={{ textTransform: 'uppercase' }} color={'#000'} fontWeight="700" fontSize={scale(16)}>MDX | 2024</Text>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={{ width: scale(18), borderRadius: scale(3), height: scale(18), backgroundColor: 'black' }}></View>
+                                <Text style={{ marginLeft: scale(6), textTransform: 'uppercase', }} color={'#000'} fontWeight="700" fontSize={scale(16)}>black</Text>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={{ marginVertical: scale(20) }}>
+                        <Button
+                            onPress={() => {
+                                setChooseCar(false)
+                                setModalVisible(true);
+                                // or another screen
+                            }}
+                            title="DONE"
+                            color="#fff"
+                            fontWeight="700"
+                            fontSize={scale(16)}
+                            backgroundColor="#72BBFA"
+                            width={scale(260)}
+                            height={scale(40)}
+                        />
+                    </View>
+
+                    <View style={{ flexDirection: 'row' }}>
+                        <AntDesign style={{ alignSelf: 'center' }} name="plus" color="#8828A3" size={scale(22)} />
+                        <View>
+                            <Text fontWeight='700' fontSize={scale(20)} color='#770996' style={{ textTransform: 'uppercase', padding: scale(4) }}>
+                                Add a Car
+                            </Text>
+                        </View>
+                    </View>
+                </CustomModal>
+                <CustomModal
+                    width={scale(300)}
+                    backgroundColor={'#fff'}
+                    // borderWidth={scale(3)}
+                    // borderRadius={scale(12)}
+                    // borderColor={'#3A3A3A69'}
+                    visible={modalVisible}
+                >
+
+                    <View style={{ marginTop: scale(10) }}>
+                        <View style={{ alignItems: 'center' }}>
+                            <Octicons name="horizontal-rule" style={{ marginTop: scale(-20) }} color="#770996" height={scale(40)} size={(scale(60))} />
+                        </View>
+                        <TouchableOpacity >
+                            <View style={{ marginVertical: scale(10), }}>
+                                <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(60), alignItems: 'center', flexDirection: 'row' }} >
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}><Ionicons name="location-outline" color="grey" size={(scale(16))} />
+                                        <Text fontSize={scale(16)} color={"grey"}>  Your Current location</Text></View>
+                                    <Feather name="chevron-right" color="grey" size={(scale(18))} />
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                        <Text fontWeight='700' fontSize={scale(16)} color='#3A3A3A' style={{ padding: scale(4) }}>
+                            Additional Address Details
+                        </Text>
+                        <TouchableOpacity >
+                            <View style={{ marginVertical: scale(10), }}>
+                                <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
+                                    <Text fontSize={scale(16)} color={"grey"}>Building Name/Street</Text>
+                                    <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity >
+                            <View style={{ marginVertical: scale(10), }}>
+                                <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
+                                    <Text fontSize={scale(16)} color={"grey"}>Villa/Apartment Number</Text>
+                                    <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity >
+                            <View style={{ marginVertical: scale(10), }}>
+                                <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
+                                    <Text fontSize={scale(16)} color={"grey"}>Notes</Text>
+                                    <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                        <View>
+                            <Text fontWeight='700' fontSize={scale(15)} color='#3A3A3A' style={{ padding: scale(4) }}>
+                                Additional Address Details (Optional)
+                            </Text>
+                        </View>
+                        <FlatList
+                            style={{ marginVertical: scale(5) }}
+                            horizontal
+                            data={address}
+                            keyExtractor={(item) => item.id}
+                            contentContainerStyle={{ width: scale(260), justifyContent: 'space-between', }}
+                            renderItem={({ item }) => {
+                                const isSelected = selectedAddress === item.id;
+                                return (
+                                    <TouchableOpacity
+                                        onPress={() => handleAddressSelect(item.id)}
+                                        style={{
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            backgroundColor: isSelected ? '#A188C0' : '#fff',
+                                            borderRadius: 20,
+                                            borderColor: isSelected ? "#A188C0" : '#13418C',
+                                            borderWidth: 1,
+                                            height: scale(35),
+                                            width: scale(75),
+                                        }}
+                                    >
+                                        <Text color={isSelected ? '#fff' : '#3A3A3A'}>{item.label}</Text>
+                                    </TouchableOpacity>
+                                );
+                            }}
+                        />
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: scale(10) }}>
+                            <Button onPress={() => { setModalVisible(false); setProfileVisible(true); }} title="Skip" color="#fff" fontWeight="700" fontSize={scale(16)} backgroundColor="#72BBFA" width={scale(120)} height={scale(40)} />
+                            <Button onPress={() => { setModalVisible(false); setProfileVisible(true); }} title="Next" color="#fff" fontWeight="700" fontSize={scale(16)} backgroundColor="#72BBFA" width={scale(120)} height={scale(40)} />
+                        </View>
+                    </View>
+                </CustomModal>
+                <CustomModal
+                    closeIcon
+                    onClose={() => setProfileVisible(false)}
+                    width={scale(300)}
+                    backgroundColor={'#fff'}
+                    // borderWidth={scale(3)}
+                    borderRadius={scale(12)}
+                    // borderColor={'#3A3A3A69'}
+                    visible={profileVisible}
+                >
+
+                    <View style={{ marginTop: scale(10) }}>
+                        <View>
+                            <Text fontWeight='700' fontSize={scale(24)} color='#3A3A3A' style={{ paddingHorizontal: scale(4) }}>
+                                0123456789
+                            </Text>
+                            <Text fontWeight='700' fontSize={scale(18)} color='#70BEFD' style={{ paddingHorizontal: scale(4) }}>
+                                Complete Profile
+                            </Text>
+                        </View>
+                        <TouchableOpacity >
+                            <View style={{ marginVertical: scale(10), }}>
+                                <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
+                                    <Text fontSize={scale(16)} color={"grey"}>My Rides</Text>
+                                    <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity >
+                            <View style={{ marginVertical: scale(10), }}>
+                                <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
+                                    <Text fontSize={scale(16)} color={"grey"}>My Orders</Text>
+                                    <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity >
+                            <View style={{ marginVertical: scale(10), }}>
+                                <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
+                                    <Text fontSize={scale(16)} color={"grey"}>Payment</Text>
+                                    <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity >
+                            <View style={{ marginVertical: scale(10), }}>
+                                <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
+                                    <Text fontSize={scale(16)} color={"grey"}>Content</Text>
+                                    <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity >
+                            <View style={{ marginVertical: scale(10), }}>
+                                <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(45), alignItems: 'center', flexDirection: 'row' }} >
+                                    <Text fontSize={scale(16)} color={"grey"}>FAQs</Text>
+                                    <Feather style={{}} name="chevron-right" color="grey" size={(scale(18))} />
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </CustomModal>
+
             </Background >
         </SafeAreaView >
     )
 }
+

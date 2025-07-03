@@ -25,7 +25,7 @@ export default function Signup({ navigation }) {
                     }}>
 
                         <TextField
-                        fontSize={scale(16)}
+                        fontSize={scale(15)}
                             style={{
                                 width: scale(280),
                                 // height: scale(40),
@@ -35,7 +35,7 @@ export default function Signup({ navigation }) {
                             placeholder='Full Name'
                         />
                         <TextField
-                            fontSize={scale(16)}
+                            fontSize={scale(15)}
                             style={{
                                 width: scale(280),
                                 // height: scale(40),
@@ -45,7 +45,7 @@ export default function Signup({ navigation }) {
                             placeholder='Mobile Number'
                         />
                         <TextField
-                            fontSize={scale(16)}
+                            fontSize={scale(15)}
                             style={{
                                 width: scale(280),
                                 // height: scale(40),
@@ -56,7 +56,7 @@ export default function Signup({ navigation }) {
                         />
                         <TextField
                             ShowSecureTextEntry
-                            fontSize={scale(16)}
+                            fontSize={scale(15)}
                             style={{
                                 width: scale(280),
                                 // height: scale(40),
@@ -66,7 +66,7 @@ export default function Signup({ navigation }) {
                         />
                         <TextField
                             ShowSecureTextEntry
-                            fontSize={scale(16)}
+                            fontSize={scale(15)}
                             style={{
                                 width: scale(280),
                                 // height: scale(40),

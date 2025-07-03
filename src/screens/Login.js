@@ -27,7 +27,7 @@ export default function Login({ navigation }) {
           }}>
 
             <TextField
-              fontSize={scale(16)}
+              fontSize={scale(15)}
                       borderColor= '#13418C'
 
               style={{
@@ -41,7 +41,7 @@ export default function Login({ navigation }) {
 
             <TextField
               ShowSecureTextEntry
-              fontSize={scale(16)}
+              fontSize={scale(15)}
               style={{
                 width: scale(280),
                 // height: scale(40),
@@ -54,7 +54,7 @@ export default function Login({ navigation }) {
               marginTop: scale(2),
               alignSelf: 'flex-end',
               marginRight: scale(25)
-            }} color='#13418C' fontWeight="400" fontSize={scale(16)}>
+            }} color='#13418C' fontWeight="400" fontSize={scale(15)}>
               Forgot your password?
             </Text>
 

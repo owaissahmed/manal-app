@@ -12,20 +12,21 @@ import HalfCar from '../../assets/images/halfcar.png'; // low-opacity bg image
 
 export default function CarVehicle({ navigation }) {
 
+    const carBrandsInDubai = ["Toyota", "Nissan", "Mitsubishi", "Hyundai", "Kia", "Honda", "Chevrolet", "Ford", "Mercedes-Benz", "BMW", "Lexus", "Land Rover", "Jeep", "Mazda", "Volkswagen", "Audi", "Porsche", "Infiniti", "Tesla", "GMC"
+    ];
+
+
     const Vehicles =
         [
-            { id: 'vehicles_1', title: 'Acura', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
-            { id: 'vehicles_2', title: 'Acura', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
-            { id: 'vehicles_3', title: 'Acura', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
-            { id: 'vehicles_4', title: 'Acura', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
-            { id: 'vehicles_5', title: 'Acura', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
-            { id: 'vehicles_6', title: 'Acura', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
-            { id: 'vehicles_7', title: 'Acura', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
-            { id: 'vehicles_8', title: 'Acura', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
-            { id: 'vehicles_9', title: 'Acura', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
-            { id: 'vehicles_10', title: 'Acura', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
-            { id: 'vehicles_11', title: 'Acura', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
-
+            { id: 'vehicles_1', title: 'Toyota', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
+            { id: 'vehicles_2', title: 'Nissan', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
+            { id: 'vehicles_3', title: 'Mitsubishi', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
+            { id: 'vehicles_4', title: 'Hyundai', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
+            { id: 'vehicles_5', title: 'Kia', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
+            { id: 'vehicles_7', title: 'Honda', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
+            { id: 'vehicles_8', title: 'Chevrolet', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
+            { id: 'vehicles_9', title: 'Ford', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
+            { id: 'vehicles_10', title: 'Mercedes-Benz', logo: AcuraLogo, icon: <Feather name="chevron-right" color="black" size={(scale(18))} /> },
         ]
 
 

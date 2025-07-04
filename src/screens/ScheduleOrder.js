@@ -23,7 +23,7 @@ import CustomBottomSheet from '../components/BottomSheet';
 // import Dropdown from '../components/Dropdown';
 export default function ScheduleOrder({ navigation }) {
     useFocusEffect(useCallback(() => {
-        setChooseCar(true);
+        { modalVisible && profileVisible && (setChooseCar(true)) }
     }, []))
     const [showCalendar, setShowCalendar] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
@@ -257,7 +257,7 @@ export default function ScheduleOrder({ navigation }) {
                         <View style={{ alignItems: 'center' }}>
                             <Octicons name="horizontal-rule" style={{ marginTop: scale(-20) }} color="#770996" height={scale(40)} size={(scale(60))} />
                         </View>
-                        <TouchableOpacity >
+                        <TouchableOpacity onPress={() => navigation.navigate('Location')}>
                             <View style={{ marginVertical: scale(10), }}>
                                 <View style={{ width: scale(260), paddingHorizontal: scale(10), justifyContent: 'space-between', backgroundColor: 'white', borderColor: '#13418C', borderWidth: 1, borderRadius: scale(10), height: scale(60), alignItems: 'center', flexDirection: 'row' }} >
                                     <View style={{ flexDirection: 'row', alignItems: 'center' }}><Ionicons name="location-outline" color="grey" size={(scale(16))} />

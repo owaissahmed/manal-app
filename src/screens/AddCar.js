@@ -1,4 +1,4 @@
-import { Image, SafeAreaView, ScrollView, View } from 'react-native'
+import { Image, SafeAreaView, ScrollView, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import Background from '../components/Background'
 // import CarWashBG from '../../assets/images/carWashbg.png'
@@ -31,8 +31,8 @@ export default function AddCar({ navigation }) {
                                 </View>
                             </View>
                         </View>
-                        <View style={{width:scale(280),marginBottom:scale(8)}}>
-                            <Text style={{ textTransform: 'uppercase',padding:scale(6) }}fontWeight="700" color={'#770996'} fontSize={scale(16)}>
+                        <View style={{ width: scale(280), marginBottom: scale(8) }}>
+                            <Text style={{ textTransform: 'uppercase', padding: scale(6) }} fontWeight="700" color={'#770996'} fontSize={scale(16)}>
                                 cAr plate details (optional):
                             </Text>
                         </View>
@@ -41,19 +41,20 @@ export default function AddCar({ navigation }) {
                                 fill in your cAR'S PLATE NUMBER TO HELP US LOCATE YOU QUICKLY AND PROPERLY
                             </Text>
                         </View>
-                        <View style={{ alignItems: 'center', justifyContent: 'center', gap: scale(20), backgroundColor: "white", borderRadius: scale(20), height: scale(170), borderColor: 'black', borderWidth: scale(1), borderStyle: 'dashed', marginBottom: scale(18), width: scale(280) }}>
-                            <AntDesign style={{ paddingHorizontal: scale(8), paddingVertical: scale(6), borderRadius: scale(10), backgroundColor: '#74B9F8' }} name="plus" color="#ffffff" size={scale(22)} />
-                            <Text style={{ textTransform: 'uppercase' }} color={'#770996'} fontWeight="700" fontSize={scale(16)}>
-                                attach car
-                            </Text>
-                        </View>
-                        <View style={{ marginTop: scale(2),marginBottom: scale(14), alignItems: 'center', justifyContent: 'center', backgroundColor: "white", borderRadius: scale(20), height: scale(65), width: scale(280) }}>
+                        <TouchableOpacity onPress={() => navigation.navigate('CarVehicle')}>
+                            <View style={{ alignItems: 'center', justifyContent: 'center', gap: scale(20), backgroundColor: "white", borderRadius: scale(20), height: scale(170), borderColor: 'black', borderWidth: scale(1), borderStyle: 'dashed', marginBottom: scale(18), width: scale(280) }}>
+                                <AntDesign style={{ paddingHorizontal: scale(8), paddingVertical: scale(6), borderRadius: scale(10), backgroundColor: '#74B9F8' }} name="plus" color="#ffffff" size={scale(22)} />
+                                <Text style={{ textTransform: 'uppercase' }} color={'#770996'} fontWeight="700" fontSize={scale(16)}>
+                                    attach car
+                                </Text>
+                            </View></TouchableOpacity>
+                        <View style={{ marginTop: scale(2), marginBottom: scale(14), alignItems: 'center', justifyContent: 'center', backgroundColor: "white", borderRadius: scale(20), height: scale(65), width: scale(280) }}>
                             <Image style={{ padding: scale(4) }} source={Dubai} />
                         </View>
 
                         <View style={{ marginTop: scale(10) }}>
                             <Button onPress={() => navigation.navigate('CarVehicle')}
-                            // <Button onPress={() => console.log('yes')}
+                                // <Button onPress={() => console.log('yes')}
                                 title="CONTINUE" color={"#fff"} fontWeight="700" fontSize={scale(16)} backgroundColor={"#72BBFA"} width={scale(280)} height={scale(40)} />
                         </View>
                     </View>

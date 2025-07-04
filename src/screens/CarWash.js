@@ -24,6 +24,7 @@ const servicesByVehicle = {
     ],
     SUV: [
         { id: 'suv_1', title: 'SUV Washing', price: '40.00 AED', icon: Logo },
+        { id: 'suv_2', title: 'SUV Washing', price: '40.00 AED', icon: Logo },
         // Add other services...
     ],
     VAN: [
@@ -55,7 +56,7 @@ export default function CarWash({ navigation }) {
             <TouchableOpacity
                 onPress={() => toggleService(item.id)}
                 style={{
-                    width: '48%', // adjust for 2-column layout with margin
+                    width: servicesByVehicle[selectedVehicle].length > 1 ? "48%" : "96%", // adjust for 2-column layout with margin
                     height: scale(130), // fixed height
                     margin: scale(4),
                     backgroundColor: '#fff',
@@ -87,16 +88,16 @@ export default function CarWash({ navigation }) {
         <SafeAreaView style={{ flex: 1 }}>
             <Background height={scale(480)} width={scale(460)} BackgroundImage={FullCar} imageOpacity={0.1}>
                 <View style={{ marginTop: scale(30), flex: 1, justifyContent: 'space-between', alignItems: 'center' }}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Subcriptions')}><View style={{ flexDirection: 'row', marginTop: scale(20), alignSelf: 'center', alignItems: 'center', justifyContent: 'space-around', backgroundColor: 'white', width: scale(320), height: scale(45), }}>
-                        <View></View>
-                        <Text style={{ textTransform: 'uppercase' }} color={'#3A3A3A'} fontWeight={700} fontSize={scale(16)}>
-                            subscribe & save up to 50%
-                        </Text>
-                        <FontAwesome style={{ padding: scale(6) }} name="arrow-right" color="#3A3A3A" size={scale(20)} />
-                    </View>
+                    <TouchableOpacity onPress={() => navigation.navigate('Subcriptions')}>
+                        <View style={{ flexDirection: 'row',paddingHorizontal:scale(20),marginTop: scale(30), alignSelf: 'center', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'white', width: scale(320), height: scale(45), }}>
+                            <Text style={{ textTransform: 'uppercase' }} color={'#3A3A3A'} fontWeight={700} fontSize={scale(16)}>
+                                subscribe & save up to 50%
+                            </Text>
+                            <FontAwesome style={{ padding: scale(6) }} name="arrow-right" color="#3A3A3A" size={scale(20)} />
+                        </View>
                     </TouchableOpacity>
-                    <View style={{ padding: scale(4), flexDirection: 'row', marginTop: scale(10), alignSelf: 'center', alignItems: 'center', justifyContent: 'space-around', }}>
-                        <Feather style={{ padding: scale(4) }} name="plus" color="#13418C" size={scale(22)} />
+                    <View style={{ padding: scale(4),marginVertical: scale(10), flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-around', }}>
+                        <Feather style={{ padding: scale(4),alignSelf:'center' }} name="plus" color="#13418C" size={scale(22)} />
                         <Text style={{ textTransform: 'uppercase' }} color={'#13418C'} fontWeight={700} fontSize={scale(20)}>
                             Add a car
                         </Text>
@@ -106,7 +107,7 @@ export default function CarWash({ navigation }) {
                         alignSelf: 'center', alignItems: 'center',
                         flexDirection: 'row',
                         justifyContent: 'space-around',
-                        marginVertical: scale(6),
+                        marginBottom: scale(6),
                         borderRadius: scale(5),
                         paddingVertical: scale(6),
                         marginBottom: 15, backgroundColor: 'white', width: scale(320),
